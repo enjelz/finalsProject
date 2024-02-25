@@ -15,6 +15,8 @@ import java.awt.Color;
 import javax.swing.JCheckBox;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import javax.swing.JSpinner;
+import javax.swing.JRadioButton;
 
 public class RoomTypes extends JFrame {
 
@@ -32,7 +34,6 @@ public class RoomTypes extends JFrame {
 	public JCheckBox chckbxBed;
 	private JCheckBox chckbxPillow;
 	private JCheckBox chckbxBlanket;
-	private JCheckBox chckbxMassage;
 	static double total;
 	static String addOn;
 	
@@ -58,7 +59,7 @@ public class RoomTypes extends JFrame {
 	 */
 	public RoomTypes() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1167, 591);
+		setBounds(100, 100, 1439, 591);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(228, 220, 203));
 		contentPane.setForeground(new Color(255, 255, 255));
@@ -86,7 +87,7 @@ public class RoomTypes extends JFrame {
 		contentPane.add(lblNewLabel_3_4_2);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(860, 79, 268, 455);
+		panel.setBounds(1145, 79, 268, 455);
 		panel.setBackground(new Color(241, 238, 223));
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -196,32 +197,10 @@ public class RoomTypes extends JFrame {
 		lblAddons.setBounds(26, 280, 72, 25);
 		panel.add(lblAddons);
 		
-		chckbxBed = new JCheckBox("Bed");
-		chckbxBed.setBounds(81, 287, 61, 13);
-		panel.add(chckbxBed);
-		//bedSelect = chckbxBed.isSelected();
-		
-		chckbxPillow = new JCheckBox("Pillow");
-		chckbxPillow.setBounds(81, 310, 61, 13);
-		panel.add(chckbxPillow);
-		//pillowSelect = chckbxPillow.isSelected();
-		
-		chckbxBlanket = new JCheckBox("Blanket");
-		chckbxBlanket.setBounds(154, 287, 80, 13);
-		panel.add(chckbxBlanket);
-		//blanketSelect = chckbxBlanket.isSelected();
-		
-        
-        chckbxMassage = new JCheckBox("Massage");
-        chckbxMassage.setEnabled(false);
-        chckbxMassage.setBounds(155, 310, 80, 13);
-        panel.add(chckbxMassage);
-        
-        //block that disables the checkbox until the user books a room
-        chckbxBed.setEnabled(false);
-        chckbxPillow.setEnabled(false);
-        chckbxBlanket.setEnabled(false);
-        chckbxMassage.setEnabled(false);
+		JLabel lblDispAddOns = new JLabel("display of list of add-ons");
+		lblDispAddOns.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblDispAddOns.setBounds(95, 286, 157, 13);
+		panel.add(lblDispAddOns);
         
         
         JPanel panel_1 = new JPanel();
@@ -250,7 +229,7 @@ public class RoomTypes extends JFrame {
         lblStandardStatus.setBounds(535, 46, 100, 22);
         panel_1.add(lblStandardStatus);
         lblStandardStatus.setHorizontalAlignment(SwingConstants.CENTER);
-        lblStandardStatus.setFont(new Font("Sylfaen", Font.PLAIN, 14));
+        lblStandardStatus.setFont(new Font("Sylfaen", Font.PLAIN, 16));
         
         //booking of rooms
         
@@ -273,7 +252,7 @@ public class RoomTypes extends JFrame {
         		chckbxBed.setEnabled(true);
                 chckbxPillow.setEnabled(true);
                 chckbxBlanket.setEnabled(true);
-                chckbxMassage.setEnabled(true);
+                
         		
         		
         	}
@@ -334,7 +313,7 @@ public class RoomTypes extends JFrame {
         lblStandardStatus_1_1.setBounds(534, 49, 100, 22);
         panel_1_1.add(lblStandardStatus_1_1);
         lblStandardStatus_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-        lblStandardStatus_1_1.setFont(new Font("Sylfaen", Font.PLAIN, 14));
+        lblStandardStatus_1_1.setFont(new Font("Sylfaen", Font.PLAIN, 16));
         
         JButton btnDeluxeBook = new JButton("BOOK");
         btnDeluxeBook.setBounds(703, 47, 85, 21);
@@ -352,7 +331,7 @@ public class RoomTypes extends JFrame {
         		chckbxBed.setEnabled(true);
                 chckbxPillow.setEnabled(true);
                 chckbxBlanket.setEnabled(true);
-                chckbxMassage.setEnabled(true);
+               
         	}
         });
         
@@ -382,13 +361,124 @@ public class RoomTypes extends JFrame {
         lblStandardStatus_1_3.setBounds(534, 54, 100, 22);
         panel_1_2.add(lblStandardStatus_1_3);
         lblStandardStatus_1_3.setHorizontalAlignment(SwingConstants.CENTER);
-        lblStandardStatus_1_3.setFont(new Font("Sylfaen", Font.PLAIN, 14));
+        lblStandardStatus_1_3.setFont(new Font("Sylfaen", Font.PLAIN, 16));
         
         
         JButton btnLuxuryBook = new JButton("BOOK");
         btnLuxuryBook.setBounds(702, 52, 85, 21);
         panel_1_2.add(btnLuxuryBook);
         btnLuxuryBook.setBackground(new Color(240, 240, 240));
+        
+        JPanel panel_3 = new JPanel();
+        panel_3.setBackground(new Color(241, 238, 223));
+        panel_3.setBounds(860, 79, 275, 455);
+        contentPane.add(panel_3);
+        panel_3.setLayout(null);
+        
+        JLabel lblAdditionals = new JLabel("Additionals:");
+        lblAdditionals.setFont(new Font("Georgia", Font.ITALIC, 16));
+        lblAdditionals.setBounds(21, 22, 102, 24);
+        panel_3.add(lblAdditionals);
+        
+        JLabel lblBed = new JLabel("P500.00");
+        lblBed.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblBed.setBounds(166, 55, 59, 13);
+        panel_3.add(lblBed);
+        
+        JLabel lblPilloP = new JLabel("P250.00");
+        lblPilloP.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblPilloP.setBounds(166, 77, 59, 13);
+        panel_3.add(lblPilloP);
+        
+        JLabel lblBlanketP = new JLabel("P150.00");
+        lblBlanketP.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblBlanketP.setBounds(166, 101, 59, 13);
+        panel_3.add(lblBlanketP);
+        
+        JLabel lblMassageServices = new JLabel("Massage Services:");
+        lblMassageServices.setFont(new Font("Georgia", Font.PLAIN, 16));
+        lblMassageServices.setBounds(21, 125, 169, 24);
+        panel_3.add(lblMassageServices);
+        
+        chckbxBed = new JCheckBox("Bed");
+        chckbxBed.setBounds(53, 56, 80, 13);
+        panel_3.add(chckbxBed);
+        
+        //block that disables the checkbox until the user books a room
+        chckbxBed.setEnabled(false);
+        //bedSelect = chckbxBed.isSelected();
+        
+        chckbxPillow = new JCheckBox("Pillow");
+        chckbxPillow.setBounds(53, 102, 80, 13);
+        panel_3.add(chckbxPillow);
+        chckbxPillow.setEnabled(false);
+        //pillowSelect = chckbxPillow.isSelected();
+        
+        chckbxBlanket = new JCheckBox("Blanket");
+        chckbxBlanket.setBounds(53, 78, 80, 13);
+        panel_3.add(chckbxBlanket);
+        chckbxBlanket.setEnabled(false);
+        
+        JLabel lblonlyOneFor = new JLabel("*only one for each is allowed");
+        lblonlyOneFor.setFont(new Font("Tahoma", Font.ITALIC, 10));
+        lblonlyOneFor.setBounds(119, 29, 133, 13);
+        panel_3.add(lblonlyOneFor);
+        
+        JRadioButton rdbtnSigMassage = new JRadioButton("Cozy Hotel Signature Massage");
+        rdbtnSigMassage.setBounds(31, 161, 221, 23);
+        panel_3.add(rdbtnSigMassage);
+        
+        JRadioButton rdbtnAroma = new JRadioButton("Aromatherapy Massage");
+        rdbtnAroma.setBounds(31, 230, 221, 23);
+        panel_3.add(rdbtnAroma);
+        
+        JLabel lblPhpFor = new JLabel("Php 2,000 for 60 minutes");
+        lblPhpFor.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblPhpFor.setBounds(106, 207, 146, 13);
+        panel_3.add(lblPhpFor);
+        
+        JLabel lblDeets = new JLabel("Deets**");
+        lblDeets.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblDeets.setBounds(106, 191, 146, 13);
+        panel_3.add(lblDeets);
+        
+        JLabel lblDeets_1 = new JLabel("Deets**");
+        lblDeets_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblDeets_1.setBounds(106, 260, 146, 13);
+        panel_3.add(lblDeets_1);
+        
+        JLabel lblPhpFor_1 = new JLabel("Php 2,500 for 60 minutes");
+        lblPhpFor_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblPhpFor_1.setBounds(106, 276, 146, 13);
+        panel_3.add(lblPhpFor_1);
+        
+        JRadioButton rdbtnTotalBodyGlow = new JRadioButton("Total Body Glow Massage");
+        rdbtnTotalBodyGlow.setBounds(31, 300, 221, 23);
+        panel_3.add(rdbtnTotalBodyGlow);
+        
+        JLabel lblDeets_1_1 = new JLabel("Apricot Scrub with Dead Sea Salt");
+        lblDeets_1_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblDeets_1_1.setBounds(70, 330, 182, 13);
+        panel_3.add(lblDeets_1_1);
+        
+        JLabel lblPhpFor_1_1 = new JLabel("Php 3,200 for 90 minutes");
+        lblPhpFor_1_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblPhpFor_1_1.setBounds(106, 345, 146, 13);
+        panel_3.add(lblPhpFor_1_1);
+        
+        JSpinner spinner = new JSpinner();
+        spinner.setBounds(153, 384, 59, 20);
+        panel_3.add(spinner);
+        
+        JLabel lblNumberOfGuests_1 = new JLabel("Number of Guests:");
+        lblNumberOfGuests_1.setFont(new Font("Serif", Font.PLAIN, 12));
+        lblNumberOfGuests_1.setBounds(53, 381, 102, 25);
+        panel_3.add(lblNumberOfGuests_1);
+        chckbxBlanket.addItemListener(new CheckBoxListener());
+        chckbxPillow.addItemListener(new CheckBoxListener());
+        
+        	//buttons checkbox
+			chckbxBed.addItemListener(new CheckBoxListener());
         btnLuxuryBook.addActionListener(new ActionListener() {
         
         	public void actionPerformed(ActionEvent e) {
@@ -402,15 +492,9 @@ public class RoomTypes extends JFrame {
         		chckbxBed.setEnabled(true);
                 chckbxPillow.setEnabled(true);
                 chckbxBlanket.setEnabled(true);
-                chckbxMassage.setEnabled(true);
+               
         	}
         });
-        
-        	//buttons checkbox
-			chckbxBed.addItemListener(new CheckBoxListener());
-	        chckbxPillow.addItemListener(new CheckBoxListener());
-	        chckbxBlanket.addItemListener(new CheckBoxListener());
-	        chckbxMassage.addItemListener(new CheckBoxListener());
 	        
 		
 		
@@ -446,12 +530,7 @@ public class RoomTypes extends JFrame {
                 } else {
                     total = total - 150;
                 }
-            } else if (source == chckbxMassage) {
-            	if (chckbxMassage.isSelected()) {
-                	total = total + 2000;
-                } else {
-                    total = total - 2000;
-                }
+            
             }
             lblDispTotal.setText("Your total: " + String.format("P%,.2f", total));
            // updateTotal(); // Update the label whenever a checkbox state changes

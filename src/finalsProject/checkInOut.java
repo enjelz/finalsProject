@@ -141,6 +141,7 @@ public class checkInOut extends JFrame {
 				} else if (checkOutDate.isBefore(checkInDate)) {
 					lblPrompt.setText("Enter a valid checkout date.");
 					} else {
+						
 						numberOfDaysBetween = ChronoUnit.DAYS.between(checkInDate, checkOutDate);
 
 						// If you want to include both check-in and check-out days in the count:
