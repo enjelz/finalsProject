@@ -114,6 +114,12 @@ public class checkInOut extends JFrame {
 		lblPromptChildren.setBounds(255, 289, 108, 25);
 		contentPane.add(lblPromptChildren);
 		
+		SpinnerNumberModel child = new SpinnerNumberModel(0, 0, null, 1);
+		
+		JSpinner spnChildren = new JSpinner(child);
+		spnChildren.setBounds(149, 290, 96, 20);
+		contentPane.add(spnChildren);	
+		
 		
 		
 		JButton btnProceed =  new JButton("Proceed");
@@ -123,13 +129,10 @@ public class checkInOut extends JFrame {
 				
 				checkInDate = dateChsrCheckIn.getDate() != null ? dateChsrCheckIn.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate() : null;
 				checkOutDate = dateChsrCheckOut.getDate() != null ? dateChsrCheckOut.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate() : null;
-				numberOfDaysBetween = ChronoUnit.DAYS.between(checkInDate, checkOutDate);
-
-				// If you want to include both check-in and check-out days in the count:
-				numberOfDays = numberOfDaysBetween++; // Increment by 1
+				
 				
 				adult = (int) spnAdult.getValue();
-				children =(int) spnAdult.getValue();
+				children =(int) spnChildren.getValue();
 				
 				
 
@@ -138,6 +141,10 @@ public class checkInOut extends JFrame {
 				} else if (checkOutDate.isBefore(checkInDate)) {
 					lblPrompt.setText("Enter a valid checkout date.");
 					} else {
+						numberOfDaysBetween = ChronoUnit.DAYS.between(checkInDate, checkOutDate);
+
+						// If you want to include both check-in and check-out days in the count:
+						numberOfDays = numberOfDaysBetween++; // Increment by 1
 				    	setVisible(false);
 						RoomTypes f3 = new RoomTypes();
 						f3.setVisible(true);
@@ -152,11 +159,7 @@ public class checkInOut extends JFrame {
 		lblChildren.setBounds(98, 289, 48, 19);
 		contentPane.add(lblChildren);
 		
-		SpinnerNumberModel child = new SpinnerNumberModel(0, 0, null, 1);
 		
-		JSpinner spnChildren = new JSpinner(child);
-		spnChildren.setBounds(149, 290, 96, 20);
-		contentPane.add(spnChildren);
 		
 		
 		
