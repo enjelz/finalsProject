@@ -31,7 +31,7 @@ public class checkInOut extends JFrame {
 	static int children;
 	static long numberOfDays;
 	private long numberOfDaysBetween;
-	
+	static int numOfGuests;
 
 	/**
 	 * Launch the application.
@@ -88,7 +88,8 @@ public class checkInOut extends JFrame {
 		contentPane.add(lblCheckOutDate);
 		
 		
-		SpinnerNumberModel adu = new SpinnerNumberModel(1, 1, null, 1);
+		
+		SpinnerNumberModel adu = new SpinnerNumberModel(1, 1, null, 1); //initial, minimum, maximum, step size
 		
 		JSpinner spnAdult = new JSpinner(adu);
 		spnAdult.setBounds(149, 238, 96, 20);
@@ -134,7 +135,7 @@ public class checkInOut extends JFrame {
 				adult = (int) spnAdult.getValue();
 				children =(int) spnChildren.getValue();
 				
-				
+				numOfGuests = (adult + children);
 
 				if (checkInDate == null || checkOutDate == null) {
 					lblPrompt.setText("Please choose valid dates.");

@@ -16,7 +16,12 @@ import javax.swing.JCheckBox;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+//for the radio buttons
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class RoomTypes extends JFrame {
 
@@ -24,8 +29,7 @@ public class RoomTypes extends JFrame {
 	private JPanel contentPane;
 	private JLabel lblDispCheckIn;
 	private JLabel lblDispCheckOut;
-	private JLabel lblDispAdult;
-	private JLabel lblDispChildren;
+	private JLabel lblDispGuest;
 	private JLabel lblDispRoomType;
 	private JLabel lblDispDaysOfStay;
 	private static JLabel lblDispTotal;
@@ -36,6 +40,12 @@ public class RoomTypes extends JFrame {
 	private JCheckBox chckbxBlanket;
 	static double total;
 	static String addOn;
+	ButtonGroup massageButtonGroup = new ButtonGroup();
+	static JLabel lblDispMassage;
+	static double SignMassage;
+	static double AromaMassage;
+	static double BodyGlowMassage;
+	private double previousValue;
 	
 
 	/**
@@ -92,21 +102,16 @@ public class RoomTypes extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		lblDispGuest = new JLabel("");
+		lblDispGuest.setBounds(153, 216, 99, 17);
+		panel.add(lblDispGuest);
+		lblDispGuest.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblDispGuest.setText(" 0");
 		
-		lblDispChildren = new JLabel("");
-		lblDispChildren.setBounds(155, 236, 103, 13);
-		panel.add(lblDispChildren);
-		lblDispChildren.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblDispChildren.setText("Children: "+checkInOut.children);
-		
-		lblDispAdult = new JLabel("");
-		lblDispAdult.setBounds(46, 235, 99, 13);
-		panel.add(lblDispAdult);
-		lblDispAdult.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblDispAdult.setText("Adult: "+checkInOut.adult);
+		lblDispGuest.setText("" + checkInOut.numOfGuests);
 		
 		JLabel lblNumberOfGuests = new JLabel("Number of Guests: ");
-		lblNumberOfGuests.setBounds(26, 204, 168, 22);
+		lblNumberOfGuests.setBounds(26, 213, 168, 22);
 		panel.add(lblNumberOfGuests);
 		lblNumberOfGuests.setFont(new Font("Lucida Sans", Font.BOLD, 13));
 		
@@ -197,10 +202,10 @@ public class RoomTypes extends JFrame {
 		lblAddons.setBounds(26, 280, 72, 25);
 		panel.add(lblAddons);
 		
-		JLabel lblDispAddOns = new JLabel("display of list of add-ons");
-		lblDispAddOns.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblDispAddOns.setBounds(95, 286, 157, 13);
-		panel.add(lblDispAddOns);
+		lblDispMassage = new JLabel("display of list of add-ons");
+		lblDispMassage.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblDispMassage.setBounds(95, 286, 157, 13);
+		panel.add(lblDispMassage);
         
         
         JPanel panel_1 = new JPanel();
@@ -424,13 +429,7 @@ public class RoomTypes extends JFrame {
         lblonlyOneFor.setBounds(119, 29, 133, 13);
         panel_3.add(lblonlyOneFor);
         
-        JRadioButton rdbtnSigMassage = new JRadioButton("Cozy Hotel Signature Massage");
-        rdbtnSigMassage.setBounds(31, 161, 221, 23);
-        panel_3.add(rdbtnSigMassage);
         
-        JRadioButton rdbtnAroma = new JRadioButton("Aromatherapy Massage");
-        rdbtnAroma.setBounds(31, 230, 221, 23);
-        panel_3.add(rdbtnAroma);
         
         JLabel lblPhpFor = new JLabel("Php 2,000 for 60 minutes");
         lblPhpFor.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -452,9 +451,7 @@ public class RoomTypes extends JFrame {
         lblPhpFor_1.setBounds(106, 276, 146, 13);
         panel_3.add(lblPhpFor_1);
         
-        JRadioButton rdbtnTotalBodyGlow = new JRadioButton("Total Body Glow Massage");
-        rdbtnTotalBodyGlow.setBounds(31, 300, 221, 23);
-        panel_3.add(rdbtnTotalBodyGlow);
+        
         
         JLabel lblDeets_1_1 = new JLabel("Apricot Scrub with Dead Sea Salt");
         lblDeets_1_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -466,20 +463,26 @@ public class RoomTypes extends JFrame {
         lblPhpFor_1_1.setBounds(106, 345, 146, 13);
         panel_3.add(lblPhpFor_1_1);
         
-        JSpinner spinner = new JSpinner();
-        spinner.setBounds(153, 384, 59, 20);
-        panel_3.add(spinner);
+        SpinnerNumberModel a = new SpinnerNumberModel(1, 1, checkInOut.numOfGuests , 1);
+        JSpinner spnGuests = new JSpinner(a);
+        spnGuests.setBounds(153, 384, 59, 20);
+        panel_3.add(spnGuests);
         
-        JLabel lblNumberOfGuests_1 = new JLabel("Number of Guests:");
-        lblNumberOfGuests_1.setFont(new Font("Serif", Font.PLAIN, 12));
-        lblNumberOfGuests_1.setBounds(53, 381, 102, 25);
-        panel_3.add(lblNumberOfGuests_1);
+      
+       
+        
+        JLabel lblGuestsMassage = new JLabel("Number of Guests:");
+        lblGuestsMassage.setFont(new Font("Serif", Font.PLAIN, 12));
+        lblGuestsMassage.setBounds(53, 381, 102, 25);
+        panel_3.add(lblGuestsMassage);
         chckbxBlanket.addItemListener(new CheckBoxListener());
         chckbxPillow.addItemListener(new CheckBoxListener());
         
         	//buttons checkbox
 			chckbxBed.addItemListener(new CheckBoxListener());
-        btnLuxuryBook.addActionListener(new ActionListener() {
+        
+			
+			btnLuxuryBook.addActionListener(new ActionListener() {
         
         	public void actionPerformed(ActionEvent e) {
         		
@@ -497,7 +500,57 @@ public class RoomTypes extends JFrame {
         });
 	        
 		
-		
+			//radio button
+	        JRadioButton rdbtnSigMassage = new JRadioButton("Cozy Hotel Signature Massage");
+	        rdbtnSigMassage.setBounds(31, 161, 221, 23);
+	        panel_3.add(rdbtnSigMassage);
+	        
+	        JRadioButton rdbtnAromaMassage = new JRadioButton("Aromatherapy Massage");
+	        rdbtnAromaMassage.setBounds(31, 230, 221, 23);
+	        panel_3.add(rdbtnAromaMassage);
+	        
+	        JRadioButton rdbtnBodyGlowMassage = new JRadioButton("Total Body Glow Massage");
+	        rdbtnBodyGlowMassage.setBounds(31, 300, 221, 23);
+	        panel_3.add(rdbtnBodyGlowMassage);
+	        
+	        //adding to the button group
+	        massageButtonGroup.add(rdbtnSigMassage);
+	        massageButtonGroup.add(rdbtnAromaMassage);
+	        massageButtonGroup.add(rdbtnBodyGlowMassage);
+	        
+	        String selectedMassage = null;
+	       
+	        lblDispMassage.setText(selectedMassage);
+	        ItemListener radioItemListener = new ItemListener() {
+	            @Override
+	            public void itemStateChanged(ItemEvent e) {
+	                if (e.getStateChange() == ItemEvent.SELECTED) {
+	                    if (rdbtnSigMassage.isSelected()) {
+	                        total -= previousValue; // Subtract previousValue from total
+	                        lblDispMassage.setText(rdbtnSigMassage.getText());
+	                        previousValue = 2000;
+	                        total += previousValue; // Add the value of the selected radio button to the total
+	                    } else if (rdbtnAromaMassage.isSelected()) {
+	                        total -= previousValue; // Subtract previousValue from total
+	                        lblDispMassage.setText(rdbtnAromaMassage.getText());
+	                        previousValue = 2500;
+	                        total += previousValue; 
+	                    } else if (rdbtnBodyGlowMassage.isSelected()) {
+	                        total -= previousValue;
+	                        lblDispMassage.setText(rdbtnBodyGlowMassage.getText());
+	                        previousValue = 3200;
+	                        total += previousValue;
+	                    }
+	                }
+	                
+	                lblDispTotal.setText("Your total: " + String.format("P%,.2f", total));
+	            }
+	        };
+	        
+	     // Add the ItemListener to each radio button
+	        rdbtnSigMassage.addItemListener(radioItemListener);
+	        rdbtnAromaMassage.addItemListener(radioItemListener);
+	        rdbtnBodyGlowMassage.addItemListener(radioItemListener);
 		
 	}
 	
@@ -533,10 +586,10 @@ public class RoomTypes extends JFrame {
             
             }
             lblDispTotal.setText("Your total: " + String.format("P%,.2f", total));
-           // updateTotal(); // Update the label whenever a checkbox state changes
+          
         }
-	
-	
 	}
+	
+	
 }
 
