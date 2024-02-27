@@ -108,11 +108,11 @@ public class checkInOut extends JFrame {
 		lblPrompt = new JLabel("");
 		lblPrompt.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrompt.setForeground(new Color(255, 0, 0));
-		lblPrompt.setBounds(114, 174, 158, 25);
+		lblPrompt.setBounds(10, 174, 376, 25);
 		contentPane.add(lblPrompt);
 		
 		lblPromptChildren = new JLabel("*Ages 12 and below");
-		lblPromptChildren.setBounds(255, 289, 108, 25);
+		lblPromptChildren.setBounds(255, 289, 131, 25);
 		contentPane.add(lblPromptChildren);
 		
 		SpinnerNumberModel child = new SpinnerNumberModel(0, 0, null, 1);
@@ -141,7 +141,9 @@ public class checkInOut extends JFrame {
 					lblPrompt.setText("Please choose valid dates.");
 				} else if (checkOutDate.isBefore(checkInDate)) {
 					lblPrompt.setText("Enter a valid checkout date.");
-					} else {
+				} else if (checkInDate.equals(checkOutDate)) {
+					lblPrompt.setText("The hotel minimum stay is 1 night.");
+				} else {
 						
 						numberOfDaysBetween = ChronoUnit.DAYS.between(checkInDate, checkOutDate);
 
@@ -160,12 +162,6 @@ public class checkInOut extends JFrame {
 		lblChildren.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblChildren.setBounds(98, 289, 48, 19);
 		contentPane.add(lblChildren);
-		
-		
-		
-		
-		
-		
 		
 	}
 }

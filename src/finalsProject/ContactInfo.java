@@ -13,6 +13,7 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
 
 
 public class ContactInfo extends JFrame {
@@ -23,11 +24,15 @@ public class ContactInfo extends JFrame {
 	private JTextField txtCNumber;
 	private JTextField txtEmailAdd;
 	private JTextField txtAdditional;
-	private JTextField txtLName;
 	private JTextField txtCard;
 	private JTextField txtCardExp;
 	private JTextField txtCardCVV;
 	private JTextField txtCardName;
+	private JTextArea textAreaPayment;
+	private JLabel lblDispDaysOfStay;
+	private JLabel lblDispGuest;
+	private JLabel lblDispCheckIn;
+	private JLabel lblDispCheckOut;
 
 	/**
 	 * Launch the application.
@@ -63,13 +68,13 @@ public class ContactInfo extends JFrame {
 		lblContactInfo.setBounds(26, 33, 242, 29);
 		contentPane.add(lblContactInfo);
 		
-		JLabel lblFName = new JLabel("First Name:");
+		JLabel lblFName = new JLabel("Full Name:");
 		lblFName.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblFName.setBounds(26, 79, 62, 23);
 		contentPane.add(lblFName);
 		
 		txtFName = new JTextField();
-		txtFName.setBounds(26, 102, 218, 29);
+		txtFName.setBounds(26, 102, 460, 29);
 		contentPane.add(txtFName);
 		txtFName.setColumns(10);
 		
@@ -102,16 +107,6 @@ public class ContactInfo extends JFrame {
 		txtAdditional.setColumns(10);
 		txtAdditional.setBounds(26, 225, 460, 54);
 		contentPane.add(txtAdditional);
-		
-		txtLName = new JTextField();
-		txtLName.setColumns(10);
-		txtLName.setBounds(268, 102, 218, 29);
-		contentPane.add(txtLName);
-		
-		JLabel lblLastName = new JLabel("Last Name:");
-		lblLastName.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblLastName.setBounds(268, 79, 62, 23);
-		contentPane.add(lblLastName);
 		
 		JLabel lblPaymentInformation = new JLabel("Payment Information:");
 		lblPaymentInformation.setFont(new Font("Georgia", Font.PLAIN, 18));
@@ -157,78 +152,6 @@ public class ContactInfo extends JFrame {
 		lblCardName.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCardName.setBounds(26, 445, 112, 23);
 		contentPane.add(lblCardName);
-		
-		JPanel panel = new JPanel();
-		panel.setLayout(null);
-		panel.setBackground(new Color(241, 238, 223));
-		panel.setBounds(514, 79, 268, 455);
-		contentPane.add(panel);
-		
-		JLabel lblDispChildren = new JLabel("Children: 0");
-		lblDispChildren.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblDispChildren.setBounds(155, 236, 103, 13);
-		panel.add(lblDispChildren);
-		
-		JLabel lblDispAdult = new JLabel("Adult: 0");
-		lblDispAdult.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblDispAdult.setBounds(46, 235, 99, 13);
-		panel.add(lblDispAdult);
-		
-		JLabel lblNumberOfGuests = new JLabel("Number of Guests: ");
-		lblNumberOfGuests.setFont(new Font("Lucida Sans", Font.BOLD, 13));
-		lblNumberOfGuests.setBounds(26, 204, 168, 22);
-		panel.add(lblNumberOfGuests);
-		
-		JLabel lblCheckIn = new JLabel("Check-in");
-		lblCheckIn.setFont(new Font("Lucida Fax", Font.BOLD, 13));
-		lblCheckIn.setBounds(26, 76, 72, 13);
-		panel.add(lblCheckIn);
-		
-		JLabel lblCheckInTime = new JLabel("After 2:00PM");
-		lblCheckInTime.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblCheckInTime.setBounds(26, 100, 106, 13);
-		panel.add(lblCheckInTime);
-		
-		JLabel lblDispCheckOut = new JLabel(" to null");
-		lblDispCheckOut.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblDispCheckOut.setBounds(126, 145, 126, 13);
-		panel.add(lblDispCheckOut);
-		
-		JLabel lblDispCheckIn = new JLabel("null");
-		lblDispCheckIn.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDispCheckIn.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblDispCheckIn.setBounds(26, 145, 97, 13);
-		panel.add(lblDispCheckIn);
-		
-		JLabel lblDispDaysOfStay = new JLabel("");
-		lblDispDaysOfStay.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDispDaysOfStay.setFont(new Font("Lucida Sans", Font.BOLD | Font.ITALIC, 11));
-		lblDispDaysOfStay.setBounds(88, 169, 106, 24);
-		panel.add(lblDispDaysOfStay);
-		
-		JLabel lblBookingSummary = new JLabel("Booking Summary");
-		lblBookingSummary.setFont(new Font("Georgia", Font.PLAIN, 20));
-		lblBookingSummary.setBounds(21, 26, 224, 24);
-		panel.add(lblBookingSummary);
-		
-		JLabel lblCheckout = new JLabel("Check-out");
-		lblCheckout.setFont(new Font("Lucida Fax", Font.BOLD, 13));
-		lblCheckout.setBounds(149, 76, 72, 13);
-		panel.add(lblCheckout);
-		
-		JLabel lblBeforepm = new JLabel("Before 12:00PM");
-		lblBeforepm.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblBeforepm.setBounds(148, 100, 97, 13);
-		panel.add(lblBeforepm);
-		
-		JLabel lblPaymentDetails = new JLabel("Payment Details");
-		lblPaymentDetails.setFont(new Font("Serif", Font.BOLD, 14));
-		lblPaymentDetails.setBounds(26, 259, 126, 25);
-		panel.add(lblPaymentDetails);
-		
-		JButton btnEdit = new JButton("Edit");
-		btnEdit.setBounds(88, 421, 89, 23);
-		panel.add(btnEdit);
 		
 		JButton btnConfirm = new JButton("Confirm Booking");
 		btnConfirm.addActionListener(new ActionListener() {
@@ -285,5 +208,97 @@ public class ContactInfo extends JFrame {
 		lblPoli2.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblPoli2.setBounds(282, 482, 222, 23);
 		contentPane.add(lblPoli2);
+		
+		JPanel panelYourStay = new JPanel();
+		panelYourStay.setLayout(null);
+		panelYourStay.setBackground(new Color(241, 238, 223));
+		panelYourStay.setBounds(525, 91, 268, 455);
+		contentPane.add(panelYourStay);
+		
+		JLabel lblDispGuest = new JLabel(" 0");
+		lblDispGuest.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDispGuest.setFont(new Font("Lucida Sans", Font.BOLD | Font.ITALIC, 11));
+		lblDispGuest.setBounds(26, 169, 97, 24);
+		panelYourStay.add(lblDispGuest);
+		
+		JLabel lblCheckIn = new JLabel("Check-in");
+		lblCheckIn.setFont(new Font("Lucida Fax", Font.BOLD, 13));
+		lblCheckIn.setBounds(26, 76, 72, 13);
+		panelYourStay.add(lblCheckIn);
+		
+		JLabel lblCheckInTime = new JLabel("After 2:00PM");
+		lblCheckInTime.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblCheckInTime.setBounds(26, 100, 106, 13);
+		panelYourStay.add(lblCheckInTime);
+		
+		JLabel lblDispCheckOut = new JLabel(" to null");
+		lblDispCheckOut.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblDispCheckOut.setBounds(126, 145, 126, 13);
+		panelYourStay.add(lblDispCheckOut);
+		
+		JLabel lblDispCheckIn = new JLabel("null");
+		lblDispCheckIn.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDispCheckIn.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblDispCheckIn.setBounds(26, 145, 97, 13);
+		panelYourStay.add(lblDispCheckIn);
+		
+		JLabel lblDispDaysOfStay = new JLabel("");
+		lblDispDaysOfStay.setFont(new Font("Lucida Sans", Font.BOLD | Font.ITALIC, 11));
+		lblDispDaysOfStay.setBounds(126, 169, 126, 24);
+		panelYourStay.add(lblDispDaysOfStay);
+		
+		JLabel lblYourStay = new JLabel("Booking Summary:");
+		lblYourStay.setFont(new Font("Georgia", Font.PLAIN, 20));
+		lblYourStay.setBounds(21, 26, 200, 24);
+		panelYourStay.add(lblYourStay);
+		
+		JLabel lblCheckout = new JLabel("Check-out");
+		lblCheckout.setFont(new Font("Lucida Fax", Font.BOLD, 13));
+		lblCheckout.setBounds(149, 76, 72, 13);
+		panelYourStay.add(lblCheckout);
+		
+		JLabel lblBeforepm = new JLabel("Before 12:00PM");
+		lblBeforepm.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblBeforepm.setBounds(148, 100, 97, 13);
+		panelYourStay.add(lblBeforepm);
+		
+		textAreaPayment = new JTextArea();
+		textAreaPayment.setEditable(false);
+		textAreaPayment.setBackground(new Color(241, 238, 223));
+		textAreaPayment.setBounds(50, 239, 189, 189);
+		panelYourStay.add(textAreaPayment);
+		
+		JLabel lblPaymentDetails = new JLabel("Payment Details: ");
+		lblPaymentDetails.setFont(new Font("Georgia", Font.PLAIN, 16));
+		lblPaymentDetails.setBounds(21, 204, 200, 24);
+		panelYourStay.add(lblPaymentDetails);
+		
+		displayPayment();
+		//display();
+		
 	}
+	private void displayPayment() {
+		textAreaPayment.setText(RoomTypes.roomType+" Room Php"+ String.format("%,.2f\n",RoomTypes.previousTotal)
+				+"("+checkInOut.numberOfDays+" night/s)\n"
+				+ String.join("\n", RoomTypes.selectedAdditionals)+ " for "+RoomTypes.massageGuests
+				+"\n\tPhp"+String.format("%,.2f",RoomTypes.totalMassage)
+				+"\nTotal Amount Due: \n\tPhp"+String.format("%,.2f",RoomTypes.total));
+	}
+	/*private void display() {
+		lblDispCheckIn.setText("" + checkInOut.checkInDate);
+		lblDispCheckOut.setText(" to " + checkInOut.checkOutDate);
+		
+		if (checkInOut.numOfGuests ==1) {
+			lblDispGuest.setText(checkInOut.numOfGuests +" Guest, ");
+			}else {
+				lblDispGuest.setText(checkInOut.numOfGuests +" Guests, ");
+			}
+		
+		if(checkInOut.numberOfDays == 1) {
+			lblDispDaysOfStay.setText(checkInOut.numberOfDays+" night");
+			}else {
+				lblDispDaysOfStay.setText(checkInOut.numberOfDays+" nights");
+			}
+	
+		}*/
 }
