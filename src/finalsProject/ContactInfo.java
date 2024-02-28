@@ -32,8 +32,12 @@ public class ContactInfo extends JFrame {
 	private JTextField txtPay;
 	private JTextArea textAreaPayment;
 	private JLabel lblError;
-	
-
+	static String name;
+	static String contact;
+	static String email;
+	static String remarks;
+	static double tqtotal;
+	static int randomNum;
 	/**
 	 * Launch the application.
 	 */
@@ -131,12 +135,25 @@ public class ContactInfo extends JFrame {
 		
 		JButton btnConfirm = new JButton("Confirm Booking");
 		btnConfirm.addActionListener(new ActionListener() {
+			
+	
 			public void actionPerformed(ActionEvent e) {
 				double total = SharedDataRoomTypes.getTotal();
 				double amountDue = Integer.parseInt(txtPay.getText());
 				if (amountDue != total) {
 					lblError.setText("Enter the same amount as your amount due.");
 				}else {
+					
+					String incrementedValue = incrementValue("001");
+			        System.out.println("Incremented value: " + incrementedValue);
+					}
+					
+					name = txtFName.getText();
+					contact = txtCNumber.getText();
+					email = txtEmailAdd.getText();
+					remarks = txtAdditional.getText();
+					tqtotal = Double.parseDouble(txtPay.getText());
+					
 				
 					SharedDataContactInfo.setFullName(txtFName.getText());
 					SharedDataContactInfo.setContactNumber(txtCNumber.getText());
@@ -149,7 +166,14 @@ public class ContactInfo extends JFrame {
 				ThankYou f5 = new ThankYou();
 				f5.setVisible(true);
 				}
+			
+			// Method to increment a given value in the format "###"
+			private String incrementValue(String value) {
+			    int num = Integer.parseInt(value);
+			    num++; // Incrementing the value by one
+			    return String.format("%03d", num); // Formatting the incremented value to have three digits
 			}
+		
 		});
 		btnConfirm.setBounds(62, 419, 164, 23);
 		contentPane.add(btnConfirm);
