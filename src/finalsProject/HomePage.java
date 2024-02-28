@@ -49,13 +49,13 @@ public class HomePage extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(228, 220, 203));
-		panel.setBounds(309, 11, 311, 405);
+		panel.setBounds(322, 0, 308, 427);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JButton btnBookNow = new JButton("Book Now ");
 		btnBookNow.setBackground(new Color(206, 141, 77));
-		btnBookNow.setBounds(105, 284, 101, 27);
+		btnBookNow.setBounds(92, 284, 135, 27);
 		panel.add(btnBookNow);
 		btnBookNow.setFont(new Font("Serif", Font.PLAIN, 15));
 		
@@ -85,8 +85,9 @@ public class HomePage extends JFrame {
 		panel.add(lblAboutUs);
 		
 		JLabel lblHomePic = new JLabel("New label");
-		lblHomePic.setBounds(10, 11, 300, 405);
+		lblHomePic.setBounds(-87, 0, 448, 427);
 		contentPane.add(lblHomePic);
+		lblHomePic.setIcon(new ImageIcon(HomePage.class.getResource("/images/CozyLogo.png")));
 		btnBookNow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

@@ -24,6 +24,7 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
 import javax.swing.JTextArea;
+import javax.swing.ImageIcon;
 
 
 
@@ -103,13 +104,15 @@ public class RoomTypes extends JFrame {
 		lblCozyHotel.setFont(new Font("Serif", Font.PLAIN, 26));
 		contentPane.add(lblCozyHotel);
 		
-		JLabel lblNewLabel_1 = new JLabel("---------------------");
-		lblNewLabel_1.setBounds(42, 134, 114, 104);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblPicStandard = new JLabel("---------------------");
+		lblPicStandard.setIcon(new ImageIcon(RoomTypes.class.getResource("/images/Standard1.png")));
+		lblPicStandard.setBounds(42, 134, 114, 104);
+		contentPane.add(lblPicStandard);
 		
-		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("---------------------");
-		lblNewLabel_1_1_1_1_1.setBounds(42, 419, 114, 104);
-		contentPane.add(lblNewLabel_1_1_1_1_1);
+		JLabel lblPicLuxury = new JLabel("---------------------");
+		lblPicLuxury.setIcon(new ImageIcon(RoomTypes.class.getResource("/images/Luxury1.png")));
+		lblPicLuxury.setBounds(42, 419, 114, 104);
+		contentPane.add(lblPicLuxury);
 		
 		JLabel lblNewLabel_3_4_2 = new JLabel("");
 		lblNewLabel_3_4_2.setBounds(136, 239, 218, 13);
@@ -162,7 +165,7 @@ public class RoomTypes extends JFrame {
 		lblDispTotal.setForeground(new Color(227, 98, 147));
 		lblDispTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDispTotal.setFont(new Font("Serif", Font.BOLD, 15));
-		lblDispTotal.setBounds(26, 373, 226, 22);
+		lblDispTotal.setBounds(26, 370, 226, 22);
 		panelYourStay.add(lblDispTotal);
 		
 		JButton btnProceed = new JButton("Proceed");
@@ -293,9 +296,10 @@ public class RoomTypes extends JFrame {
         contentPane.add(panelDeluxe);
         panelDeluxe.setLayout(null);
         
-        JLabel lblNewLabel_1_1_1 = new JLabel("---------------------");
-        lblNewLabel_1_1_1.setBounds(20, 15, 114, 104);
-        panelDeluxe.add(lblNewLabel_1_1_1);
+        JLabel lblPicDeluxe = new JLabel("---------------------");
+        lblPicDeluxe.setIcon(new ImageIcon(RoomTypes.class.getResource("/images/DeLuxe1.png")));
+        lblPicDeluxe.setBounds(20, 11, 114, 104);
+        panelDeluxe.add(lblPicDeluxe);
         
         JLabel lblCapDeluxe = new JLabel("Maximum of 2 persons only.");
         lblCapDeluxe.setBounds(144, 70, 187, 13);
@@ -470,6 +474,8 @@ public class RoomTypes extends JFrame {
         chckbxPillow.addItemListener(new CheckBoxListener());
         chckbxBed.addItemListener(new CheckBoxListener());
         
+        
+        
         btnLuxuryBook = new JButton("BOOK");
         btnLuxuryBook.setBounds(702, 52, 85, 21);
         panelLuxury.add(btnLuxuryBook);
@@ -521,7 +527,8 @@ public class RoomTypes extends JFrame {
 	
 	        
 	        btnConfirmMassage = new JButton("Confirm");
-	        btnConfirmMassage.addActionListener(new ActionListener() {
+	        
+	        btnConfirmMassage.addActionListener(new ActionListener() {	        
 				public void actionPerformed(ActionEvent e) {
 	        		massageGuests = (int) spnGuests.getValue();
 	        		int massage=0;
@@ -561,13 +568,31 @@ public class RoomTypes extends JFrame {
 	        		 previousTotalMassageCost = totalMassage;
 	        	}
 	        });
-	        btnConfirmMassage.setBounds(101, 415, 89, 23);
+	        btnConfirmMassage.setBounds(153, 417, 89, 23);
 	        panelAdditionals.add(btnConfirmMassage);	
+	        
+	        JButton btnRadioBtnClear = new JButton("Clear");
+	        btnRadioBtnClear.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+	        	        massageButtonGroup.clearSelection();
+	        	        total -= previousTotalMassageCost;
+	        	        previousTotalMassageCost = 0;
+	        	        
+	        	        selectedAdditionals.remove("Signature Massage");
+	        	        selectedAdditionals.remove("Aroma Massage");
+	        	        selectedAdditionals.remove("Glow Massage\t");
+	        	        textAreaAddOns.setText(String.join("\n", selectedAdditionals));
+	        	        updateTotal();
+	        	} 
+	        }); 
+	        btnRadioBtnClear.setBounds(53, 417, 80, 23);
+	        panelAdditionals.add(btnRadioBtnClear); 
 	        
 	        toDisable();
 	        display();
 	        updateAvailability();
 	        
+
 	}
 	public static List<String> selectedAdditionals = new ArrayList<>();
 	
