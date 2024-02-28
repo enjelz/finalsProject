@@ -322,7 +322,7 @@ public class RoomTypes extends JFrame {
         	public void actionPerformed(ActionEvent e) {
         		
         		lblDispRoomType.setText("Room Type: Deluxe");
-        		roomType ="Deluxe";
+        		roomType ="Deluxe\t";
         		total = total+(checkInOut.numberOfDays * 8000)-previousTotal;
         		
         		updateTotal();
@@ -470,7 +470,7 @@ public class RoomTypes extends JFrame {
         	public void actionPerformed(ActionEvent e) {
         		
         		lblDispRoomType.setText("Room Type: Luxury");
-        		roomType ="Luxury";
+        		roomType ="Luxury\t";
         		total = total+(checkInOut.numberOfDays * 10000)-previousTotal;
         		
         		updateTotal();
@@ -510,8 +510,6 @@ public class RoomTypes extends JFrame {
 	        panelYourStay.add(textAreaAddOns);
 	
 	        
-	        
-	        
 	        btnConfirmMassage = new JButton("Confirm");
 	        btnConfirmMassage.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -524,23 +522,23 @@ public class RoomTypes extends JFrame {
 	        		
 	        		 if (rdbtnSigMassage.isSelected()) {
 	        	            massage = 2000;
-	        	            selectedAdditionals.add("Sgntr Massage");
+	        	            selectedAdditionals.add("Signature Massage");
 	        	        } else {
-	        	            selectedAdditionals.remove("Sgntr Massage");
+	        	            selectedAdditionals.remove("Signature Massage");
 	        	        }
 
 	        	        if (rdbtnAromaMassage.isSelected()) {
 	        	            massage = 2500;
-	        	            selectedAdditionals.add("Armthpy Massage");
+	        	            selectedAdditionals.add("Aroma Massage");
 	        	        } else {
-	        	            selectedAdditionals.remove("Armthpy Massage");
+	        	            selectedAdditionals.remove("Aroma Massage");
 	        	        }
 
 	        	        if (rdbtnBodyGlowMassage.isSelected()) {
 	        	            massage = 3200;
-	        	            selectedAdditionals.add("Total Massage");
+	        	            selectedAdditionals.add("Glow Massage\t");
 	        	        } else {
-	        	            selectedAdditionals.remove("Total Massage");
+	        	            selectedAdditionals.remove("Glow Massage\t");
 	        	        }
 	        	        
 	        		 totalMassage = massage* massageGuests;
@@ -563,8 +561,6 @@ public class RoomTypes extends JFrame {
 	}
 	public static List<String> selectedAdditionals = new ArrayList<>();
 	
-	
-	
 	private class CheckBoxListener implements ItemListener {
         @Override
         public void itemStateChanged(ItemEvent e) {
@@ -575,26 +571,26 @@ public class RoomTypes extends JFrame {
             if (source == chckbxBed) {
                 if (chckbxBed.isSelected()) {
                     total = total + 500;
-                    selectedAdditionals.add("Bed\tPhp500.00");
+                    selectedAdditionals.add("Bed\t\tPhp500.00");
                 } else {
                     total = total - 500;
-                    selectedAdditionals.remove("Bed\tPhp500.00");
+                    selectedAdditionals.remove("Bed\t\tPhp500.00");
                 }
             } else if (source == chckbxPillow) {
                 if (chckbxPillow.isSelected()) {
                     total = total + 100;
-                    selectedAdditionals.add("Pillow\tPhp100.00");
+                    selectedAdditionals.add("Pillow\t\tPhp100.00");
                 } else {
                     total = total - 100;
-                    selectedAdditionals.remove("Pillow\tPhp100.00");
+                    selectedAdditionals.remove("Pillow\t\tPhp100.00");
                 }
             } else if (source == chckbxBlanket) {
                 if (chckbxBlanket.isSelected()) {
                     total = total + 150;
-                    selectedAdditionals.add("Blanket\tPhp150.00");
+                    selectedAdditionals.add("Blanket\t\tPhp150.00");
                 } else {
                     total = total - 150;
-                    selectedAdditionals.remove("Blanket\tPhp150.00");
+                    selectedAdditionals.remove("Blanket\t\tPhp150.00");
                 }
             }
             
@@ -655,6 +651,9 @@ public class RoomTypes extends JFrame {
 				}
 		
 			}
+		public class SharedDataRoomTypes{
+			
+		}
 		
 }
 

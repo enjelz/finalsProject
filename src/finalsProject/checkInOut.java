@@ -149,6 +149,14 @@ public class checkInOut extends JFrame {
 
 						// If you want to include both check-in and check-out days in the count:
 						numberOfDays = numberOfDaysBetween++; // Increment by 1
+						
+						SharedDataCheckInOut.setCheckInDate(checkInDate);
+					    SharedDataCheckInOut.setCheckOutDate(checkOutDate);
+					    SharedDataCheckInOut.setAdult(adult);
+					    SharedDataCheckInOut.setChildren(children);
+					    SharedDataCheckInOut.setNumOfGuests(numOfGuests);
+					    SharedDataCheckInOut.setNumOfDays(numberOfDays);
+					    
 				    	setVisible(false);
 						RoomTypes f3 = new RoomTypes();
 						f3.setVisible(true);
@@ -163,5 +171,61 @@ public class checkInOut extends JFrame {
 		lblChildren.setBounds(98, 289, 48, 19);
 		contentPane.add(lblChildren);
 		
+	}
+	public class SharedDataCheckInOut {
+	    private static LocalDate checkInDate;
+	    private static LocalDate checkOutDate;
+	    private static int adult;
+	    private static int children;
+	    private static long numberOfDays;
+	    private static int numOfGuests;
+
+	    public static LocalDate getCheckInDate() {
+	        return checkInDate;
+	    }
+
+	    public static void setCheckInDate(LocalDate checkInDate) {
+	        SharedDataCheckInOut.checkInDate = checkInDate;
+	    }
+
+	    public static LocalDate getCheckOutDate() {
+	        return checkOutDate;
+	    }
+
+	    public static void setCheckOutDate(LocalDate checkOutDate) {
+	        SharedDataCheckInOut.checkOutDate = checkOutDate;
+	    }
+
+	    public static int getAdult() {
+	        return adult;
+	    }
+
+	    public static void setAdult(int adult) {
+	        SharedDataCheckInOut.adult = adult;
+	    }
+
+	    public static int getChildren() {
+	        return children;
+	    }
+
+	    public static void setChildren(int children) {
+	        SharedDataCheckInOut.children = children;
+	    }
+
+	    public static long getNumberOfDays() {
+	        return numberOfDays;
+	    }
+
+	    public static void setNumOfDays(long numberOfDays) {
+	        SharedDataCheckInOut.numberOfDays = numberOfDays;
+	    }
+
+	    public static int getNumOfGuests() {
+	        return numOfGuests;
+	    }
+
+	    public static void setNumOfGuests(int numOfGuests) {
+	        SharedDataCheckInOut.numOfGuests = numOfGuests;
+	    }
 	}
 }

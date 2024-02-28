@@ -33,16 +33,12 @@ public class ThankYou extends JFrame {
 	 */
 	public ThankYou() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 513);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("SALAMAT DOC");
-		lblNewLabel.setBounds(182, 104, 77, 14);
-		contentPane.add(lblNewLabel);
 	}
 
 }
