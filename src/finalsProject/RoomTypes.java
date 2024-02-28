@@ -56,9 +56,17 @@ public class RoomTypes extends JFrame {
 	private JButton btnConfirmMassage;
 	static double previousTotal;
 	private JTextArea textAreaAddOns;
+	private JButton btnLuxuryBook;
+	private JButton btnStandardBook;
+	private JButton btnDeluxeBook;
+	private static JLabel lblStandardStatus;
+	private static JLabel lblDeluxeStatus;
+	private static JLabel lblLuxuryStatus;
 	public static String roomType;
 	public static double totalMassage;
 	public static int massageGuests;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -122,8 +130,6 @@ public class RoomTypes extends JFrame {
 		lblDispGuest.setText(" 0");
 		
 		
-		
-		
 		JLabel lblCheckIn = new JLabel("Check-in");
 		lblCheckIn.setBounds(26, 76, 72, 13);
 		panelYourStay.add(lblCheckIn);
@@ -134,21 +140,16 @@ public class RoomTypes extends JFrame {
 		panelYourStay.add(lblCheckInTime);
 		lblCheckInTime.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		
-		//panel
 		lblDispCheckOut = new JLabel("");
 		lblDispCheckOut.setBounds(126, 145, 126, 13);
 		panelYourStay.add(lblDispCheckOut);
 		lblDispCheckOut.setFont(new Font("Tahoma", Font.BOLD, 12));
-		
-		
 		
 		lblDispCheckIn = new JLabel("");
 		lblDispCheckIn.setBounds(26, 145, 97, 13);
 		panelYourStay.add(lblDispCheckIn);
 		lblDispCheckIn.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblDispCheckIn.setHorizontalAlignment(SwingConstants.TRAILING);
-		
-		//CheckInDate display
 		
 		
 		lblDispRoomType = new JLabel("");
@@ -167,6 +168,11 @@ public class RoomTypes extends JFrame {
 		JButton btnProceed = new JButton("Proceed");
 		btnProceed.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				SharedDataRoomTypes.setTotal(total);
+				
+				
 				setVisible(false);
 				ContactInfo f4 = new ContactInfo();
 				f4.setVisible(true);
@@ -224,7 +230,7 @@ public class RoomTypes extends JFrame {
         lblRateStandard.setHorizontalAlignment(SwingConstants.CENTER);
         lblRateStandard.setFont(new Font("Sylfaen", Font.PLAIN, 14));
         
-        JLabel lblStandardStatus = new JLabel("Available");
+        lblStandardStatus = new JLabel("Available");
         lblStandardStatus.setBounds(535, 46, 100, 22);
         panelStandard.add(lblStandardStatus);
         lblStandardStatus.setHorizontalAlignment(SwingConstants.CENTER);
@@ -232,7 +238,7 @@ public class RoomTypes extends JFrame {
         
         //booking of rooms
         
-        JButton btnStandardBook = new JButton("BOOK");
+        btnStandardBook = new JButton("BOOK");
         btnStandardBook.setBounds(703, 44, 85, 21);
         panelStandard.add(btnStandardBook);
         btnStandardBook.setBackground(new Color(240, 240, 240));
@@ -240,6 +246,7 @@ public class RoomTypes extends JFrame {
         
         btnStandardBook.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		SharedDataRoomTypes.setSelectedRoomType(SharedDataRoomTypes.RoomType.STANDARD);
         		
         		lblDispRoomType.setText("Room Type: Standard");
         		roomType = "Standard";
@@ -306,20 +313,21 @@ public class RoomTypes extends JFrame {
         lblRateDeluxe.setHorizontalAlignment(SwingConstants.CENTER);
         lblRateDeluxe.setFont(new Font("Tahoma", Font.PLAIN, 12));
         
-        JLabel lblStandardStatus_1_1 = new JLabel("Available");
-        lblStandardStatus_1_1.setBounds(534, 49, 100, 22);
-        panelDeluxe.add(lblStandardStatus_1_1);
-        lblStandardStatus_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-        lblStandardStatus_1_1.setFont(new Font("Sylfaen", Font.PLAIN, 16));
+        lblDeluxeStatus = new JLabel("Available");
+        lblDeluxeStatus.setBounds(534, 49, 100, 22);
+        panelDeluxe.add(lblDeluxeStatus);
+        lblDeluxeStatus.setHorizontalAlignment(SwingConstants.CENTER);
+        lblDeluxeStatus.setFont(new Font("Sylfaen", Font.PLAIN, 16));
         
         
-        JButton btnDeluxeBook = new JButton("BOOK");
+        btnDeluxeBook = new JButton("BOOK");
         btnDeluxeBook.setBounds(703, 47, 85, 21);
         panelDeluxe.add(btnDeluxeBook);
         btnDeluxeBook.setBackground(new Color(240, 240, 240));
         btnDeluxeBook.addActionListener(new ActionListener() {
         	
         	public void actionPerformed(ActionEvent e) {
+        		SharedDataRoomTypes.setSelectedRoomType(SharedDataRoomTypes.RoomType.DELUXE);
         		
         		lblDispRoomType.setText("Room Type: Deluxe");
         		roomType ="Deluxe\t";
@@ -356,17 +364,14 @@ public class RoomTypes extends JFrame {
         panelLuxury.add(lblLuxury);
         lblLuxury.setFont(new Font("Tahoma", Font.BOLD, 15));
         
-        JLabel lblStandardStatus_1_3 = new JLabel("Available");
-        lblStandardStatus_1_3.setBounds(534, 54, 100, 22);
-        panelLuxury.add(lblStandardStatus_1_3);
-        lblStandardStatus_1_3.setHorizontalAlignment(SwingConstants.CENTER);
-        lblStandardStatus_1_3.setFont(new Font("Sylfaen", Font.PLAIN, 16));
+        lblLuxuryStatus = new JLabel("Available");
+        lblLuxuryStatus.setBounds(534, 54, 100, 22);
+        panelLuxury.add(lblLuxuryStatus);
+        lblLuxuryStatus.setHorizontalAlignment(SwingConstants.CENTER);
+        lblLuxuryStatus.setFont(new Font("Sylfaen", Font.PLAIN, 16));
         
         
-        JButton btnLuxuryBook = new JButton("BOOK");
-        btnLuxuryBook.setBounds(702, 52, 85, 21);
-        panelLuxury.add(btnLuxuryBook);
-        btnLuxuryBook.setBackground(new Color(240, 240, 240));
+        
         
         JPanel panelAdditionals = new JPanel();
         panelAdditionals.setBackground(new Color(241, 238, 223));
@@ -465,9 +470,14 @@ public class RoomTypes extends JFrame {
         chckbxPillow.addItemListener(new CheckBoxListener());
         chckbxBed.addItemListener(new CheckBoxListener());
         
+        btnLuxuryBook = new JButton("BOOK");
+        btnLuxuryBook.setBounds(702, 52, 85, 21);
+        panelLuxury.add(btnLuxuryBook);
+        btnLuxuryBook.setBackground(new Color(240, 240, 240));
 			
 			btnLuxuryBook.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		SharedDataRoomTypes.setSelectedRoomType(SharedDataRoomTypes.RoomType.LUXURY);
         		
         		lblDispRoomType.setText("Room Type: Luxury");
         		roomType ="Luxury\t";
@@ -556,7 +566,7 @@ public class RoomTypes extends JFrame {
 	        
 	        toDisable();
 	        display();
-
+	        updateAvailability();
 	        
 	}
 	public static List<String> selectedAdditionals = new ArrayList<>();
@@ -651,10 +661,54 @@ public class RoomTypes extends JFrame {
 				}
 		
 			}
-		public class SharedDataRoomTypes{
+		public class SharedDataRoomTypes {
 			
+			
+		    private static double total;
+		    	public static double getTotal() {
+		    		return total;
+		    	}
+
+		    	public static void setTotal(double total) {
+		    		SharedDataRoomTypes.total = total;
+		    	}
+		    	
+		    public enum RoomType {
+			        STANDARD,
+			        DELUXE,
+			        LUXURY
+		    }
+		    
+		    private static RoomType selectedRoomType;
+		    	public static RoomType getSelectedRoomType() {
+		    	        return selectedRoomType;
+		    	    }	
+		    	 public static void setSelectedRoomType(RoomType roomType) {
+		    	        selectedRoomType = roomType;
+		    	    }
+		 
 		}
-		
+		public void updateAvailability() {
+			SharedDataRoomTypes.RoomType selectedRoomType = SharedDataRoomTypes.getSelectedRoomType();
+
+	        if(selectedRoomType != null) {
+	        switch (selectedRoomType) {
+	            case LUXURY:
+	                btnLuxuryBook.setEnabled(false);
+	                lblLuxuryStatus.setText("Unnavailable");
+	                break;
+	            case DELUXE:
+	                btnDeluxeBook.setEnabled(false);
+	                lblDeluxeStatus.setText("Unnavailable");
+	                break;
+	            case STANDARD:
+	                btnStandardBook.setEnabled(false);
+	                lblStandardStatus.setText("Unnavailable");
+	                break;
+	            // Add more cases if you have additional room types
+	        } 
+		}
+	}
 }
 
 

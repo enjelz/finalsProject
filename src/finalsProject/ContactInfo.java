@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import finalsProject.RoomTypes.SharedDataRoomTypes;
 import finalsProject.checkInOut.SharedDataCheckInOut;
 
 import javax.swing.JLabel;
@@ -30,6 +31,7 @@ public class ContactInfo extends JFrame {
 	private JTextField txtAdditional;
 	private JTextField txtPay;
 	private JTextArea textAreaPayment;
+	private JLabel lblError;
 	
 
 	/**
@@ -121,21 +123,32 @@ public class ContactInfo extends JFrame {
 		txtPay.setBounds(26, 354, 242, 29);
 		contentPane.add(txtPay);
 		
+		lblError = new JLabel("");
+		lblError.setForeground(new Color(255, 0, 0));
+		lblError.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblError.setBounds(38, 385, 218, 23);
+		contentPane.add(lblError);
+		
 		JButton btnConfirm = new JButton("Confirm Booking");
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				double total = SharedDataRoomTypes.getTotal();
+				double amountDue = Integer.parseInt(txtPay.getText());
+				if (amountDue != total) {
+					lblError.setText("Enter the same amount as your amount due.");
+				}else {
 				
-				
-				
-				SharedDataContactInfo.setFullName(txtFName.getText());
-				SharedDataContactInfo.setContactNumber(txtCNumber.getText());
-				SharedDataContactInfo.setEmailAddress(txtEmailAdd.getText());
-				SharedDataContactInfo.setAdditionalDetails(txtAdditional.getText());
-				SharedDataContactInfo.setTotalAmountDue(Double.parseDouble(txtPay.getText()));
-				
+					SharedDataContactInfo.setFullName(txtFName.getText());
+					SharedDataContactInfo.setContactNumber(txtCNumber.getText());
+					SharedDataContactInfo.setEmailAddress(txtEmailAdd.getText());
+					SharedDataContactInfo.setAdditionalDetails(txtAdditional.getText());
+					SharedDataContactInfo.setTotalAmountDue(Double.parseDouble(txtPay.getText()));
+					
+					
 				setVisible(false);
 				ThankYou f5 = new ThankYou();
 				f5.setVisible(true);
+				}
 			}
 		});
 		btnConfirm.setBounds(62, 419, 164, 23);
@@ -250,28 +263,25 @@ public class ContactInfo extends JFrame {
 		lblPaymentDetails.setBounds(21, 204, 200, 24);
 		panelYourStay.add(lblPaymentDetails);
 		
+		JLabel lblPleaseNoteYour = new JLabel("*Please note your requests or special needs");
+		lblPleaseNoteYour.setFont(new Font("Tahoma", Font.ITALIC, 10));
+		lblPleaseNoteYour.setBounds(213, 203, 223, 23);
+		contentPane.add(lblPleaseNoteYour);
+		
+		
+		
 		displayPayment();
 		
 			LocalDate checkInDate = SharedDataCheckInOut.getCheckInDate();
 			LocalDate checkOutDate = SharedDataCheckInOut.getCheckOutDate();
-	
+			
+			
 			int numOfGuests = SharedDataCheckInOut.getNumOfGuests();
 			long numberOfDays = SharedDataCheckInOut.getNumberOfDays();
 	
 			lblDispCheckIn.setText("" + checkInDate);
 			lblDispCheckOut.setText(" to " + checkOutDate);
 			
-			JLabel lblPleaseNoteYour = new JLabel("*Please note your requests or special needs");
-			lblPleaseNoteYour.setFont(new Font("Tahoma", Font.ITALIC, 10));
-			lblPleaseNoteYour.setBounds(213, 203, 223, 23);
-			contentPane.add(lblPleaseNoteYour);
-			
-			JLabel lblYouHaveTo = new JLabel("");
-			lblYouHaveTo.setForeground(new Color(255, 0, 0));
-			lblYouHaveTo.setFont(new Font("Tahoma", Font.PLAIN, 10));
-			lblYouHaveTo.setBounds(38, 385, 218, 23);
-			contentPane.add(lblYouHaveTo);
-	
 				if (checkInOut.numOfGuests ==1) {
 					lblDispGuest.setText(numOfGuests +" Guest, ");
 				}else {
@@ -341,4 +351,5 @@ public class ContactInfo extends JFrame {
 	        SharedDataContactInfo.totalAmountDue = totalAmountDue;
 	    }
 	}
+	
 }
