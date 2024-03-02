@@ -145,7 +145,7 @@ public class ContactInfo extends JFrame {
 				SharedDataContactInfo.setTotalAmountDue(Double.parseDouble(txtPay.getText()));
 
 				setVisible(false);
-				ThankYou f5 = new ThankYou();
+				ThankYou f5 = new ThankYou(booking);
 				f5.setVisible(true);
 			}
 

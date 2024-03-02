@@ -4,7 +4,9 @@ import java.time.LocalDate;
 
 import finalsProject.BookingStorage.RoomType;
 
-public class Booking {
+
+//builder pattern
+public class Booking { 
 	private int id;
 	
 	private LocalDate checkInDate;

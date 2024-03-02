@@ -16,11 +16,12 @@ public class ThankYou extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JLabel lblThankYouBookingNum;
 
 	/**
 	 * Create the frame.
 	 */
-	public ThankYou() {
+	public ThankYou(Booking booking) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 573, 389);
 		contentPane = new JPanel();
@@ -71,7 +72,7 @@ public class ThankYou extends JFrame {
 		lblBookingNo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBookingNo.setFont(new Font("Serif", Font.PLAIN, 12));
 
-		JLabel lblThankYouBookingNum = new JLabel("New label");
+		 lblThankYouBookingNum = new JLabel("New label");
 		lblThankYouBookingNum.setBounds(56, 204, 63, 14);
 		panel.add(lblThankYouBookingNum);
 		lblThankYouBookingNum.setText("" + ContactInfo.randomNum);
@@ -135,6 +136,8 @@ public class ThankYou extends JFrame {
 		panel.add(lblThankYouAdditional);
 
 		lblThankYouRemarks.setText(ContactInfo.remarks);
+		
+		lblThankYouBookingNum.setText(booking.getId()+"");
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -21,7 +21,7 @@ public class BookingStorage {
 	            // Check for overlap
 	            if (checkIn.isBefore(current_checkOut) && checkOut.isAfter(current_checkIn)) {
 	                // There's an overlap, so booking is not available
-	                return false;
+	                return false; //unavailable
 	            }
 			}
 		}
