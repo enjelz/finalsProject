@@ -215,8 +215,7 @@ public class RoomTypes extends JFrame {
 		lblStandardStatus.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStandardStatus.setFont(new Font("Sylfaen", Font.PLAIN, 16));
 
-		// booking of rooms
-
+		
 		btnStandardBook = new JButton("BOOK");
 		btnStandardBook.setBounds(703, 44, 85, 21);
 		panelStandard.add(btnStandardBook);

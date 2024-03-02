@@ -77,7 +77,6 @@ public class Booking {
 
 	public Booking setNumOfDays(long num) {
 		numOfDays = num;
-
 		return this;
 	}
 

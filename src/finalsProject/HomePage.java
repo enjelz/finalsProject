@@ -74,8 +74,10 @@ public class HomePage extends JFrame {
 		lblHomePic.setBounds(-87, 0, 448, 427);
 		contentPane.add(lblHomePic);
 		lblHomePic.setIcon(new ImageIcon(HomePage.class.getResource("/images/CozyLogo.png")));
+		
 		btnBookNow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				setVisible(false);
 				checkInOut f2 = new checkInOut();
 				f2.setVisible(true);

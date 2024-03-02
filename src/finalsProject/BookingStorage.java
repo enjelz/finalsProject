@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BookingStorage {
 	public enum RoomType {
-		STANDARD, DELUXE, LUXURY,
+		STANDARD, DELUXE, LUXURY
 	}
 
 	public static List<Booking> data = new ArrayList<Booking>();

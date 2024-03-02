@@ -11,8 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
+
 
 public class ThankYou extends JFrame {
 
@@ -74,7 +73,7 @@ public class ThankYou extends JFrame {
 		lblBookingNo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBookingNo.setFont(new Font("Serif", Font.PLAIN, 12));
 
-		 lblThankYouBookingNum = new JLabel("New label");
+		lblThankYouBookingNum = new JLabel("New label");
 		lblThankYouBookingNum.setBounds(56, 204, 63, 14);
 		panel.add(lblThankYouBookingNum);
 		lblThankYouBookingNum.setText("" + ContactInfo.randomNum);
@@ -132,21 +131,18 @@ public class ThankYou extends JFrame {
 		lblThankYouCheckOut.setBounds(175, 222, 103, 14);
 		panel.add(lblThankYouCheckOut);
 		
-		lblThankYouBookingNum.setText(String.format("%03d" ,booking.getId()));
-		lblThankYouCheckIn.setText(booking.getCheckInDate()+" to");
-		lblThankYouCheckOut.setText(booking.getCheckInDate()+"");
-		lblNightsStay.setText(booking.getNumOfDays() + " Nights");
-		lblThankYouTotalAmount.setText(String.format("%,.2f", booking.getTotalPrice()));
-		lblThankYouRemarks.setText(ContactInfo.remarks);
-		
-		
-	
+			lblThankYouBookingNum.setText(String.format("%03d" ,booking.getId()));
+			lblThankYouCheckIn.setText(booking.getCheckInDate()+" to");
+			lblThankYouCheckOut.setText(booking.getCheckInDate()+"");
+			lblNightsStay.setText(booking.getNumOfDays() + " Nights");
+			lblThankYouTotalAmount.setText(String.format("%,.2f", booking.getTotalPrice()));
+			lblThankYouRemarks.setText(ContactInfo.remarks);
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				checkInOut f2 = new checkInOut();
-				f2.setVisible(true);
+				HomePage f1 = new HomePage();
+				f1.setVisible(true);
 			}
 		});
 	}

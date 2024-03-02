@@ -66,15 +66,17 @@ public class checkInOut extends JFrame {
 		lblCozyHotel.setFont(new Font("Serif", Font.PLAIN, 26));
 		lblCozyHotel.setBounds(131, 10, 126, 60);
 		contentPane.add(lblCozyHotel);
+			
+			//the date choosers
+			JDateChooser dateChsrCheckIn = new JDateChooser();
+			dateChsrCheckIn.setBounds(131, 105, 126, 19);
+			contentPane.add(dateChsrCheckIn);
 
-		JDateChooser dateChsrCheckIn = new JDateChooser();
-		dateChsrCheckIn.setBounds(131, 105, 126, 19);
-		contentPane.add(dateChsrCheckIn);
-
-		JDateChooser dateChsrCheckOut = new JDateChooser();
-		dateChsrCheckOut.setBounds(131, 150, 126, 19);
-		contentPane.add(dateChsrCheckOut);
-
+			JDateChooser dateChsrCheckOut = new JDateChooser();
+			dateChsrCheckOut.setBounds(131, 150, 126, 19);
+			contentPane.add(dateChsrCheckOut);
+			//until here
+			
 		JLabel lblCheckInDate = new JLabel("Check-in date:");
 		lblCheckInDate.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCheckInDate.setBounds(132, 91, 84, 13);
@@ -84,13 +86,15 @@ public class checkInOut extends JFrame {
 		lblCheckOutDate.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCheckOutDate.setBounds(131, 134, 103, 13);
 		contentPane.add(lblCheckOutDate);
+			
+			//spinner for adult
+			SpinnerNumberModel adu = new SpinnerNumberModel(1, 1, 4, 1); // (initial, minimum, maximum, step size)
 
-		SpinnerNumberModel adu = new SpinnerNumberModel(1, 1, 4, 1); // initial, minimum, maximum, step size
-
-		JSpinner spnAdult = new JSpinner(adu);
-		spnAdult.setBounds(149, 238, 96, 20);
-		contentPane.add(spnAdult);
-
+			JSpinner spnAdult = new JSpinner(adu);
+			spnAdult.setBounds(149, 238, 96, 20);
+			contentPane.add(spnAdult);
+			//until here
+			
 		JLabel lblNumGuests = new JLabel("Number of guests:");
 		lblNumGuests.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNumGuests.setBounds(131, 198, 126, 19);
@@ -110,29 +114,31 @@ public class checkInOut extends JFrame {
 		lblPromptChildren = new JLabel("*Ages 12 and below");
 		lblPromptChildren.setBounds(255, 289, 131, 25);
 		contentPane.add(lblPromptChildren);
+			
+			//spinner for children
+			SpinnerNumberModel child = new SpinnerNumberModel(0, 0, 2, 1); // (initial, minimum, maximum, step size)
 
-		SpinnerNumberModel child = new SpinnerNumberModel(0, 0, 2, 1);
-
-		JSpinner spnChildren = new JSpinner(child);
-		spnChildren.setBounds(149, 290, 96, 20);
-		contentPane.add(spnChildren);
-
+			JSpinner spnChildren = new JSpinner(child);
+			spnChildren.setBounds(149, 290, 96, 20);
+			contentPane.add(spnChildren);
+			//until here
+			
 		JButton btnProceed = new JButton("Proceed");
 		btnProceed.setBackground(new Color(213, 180, 136));
-		btnProceed.addActionListener(new ActionListener() {
+		btnProceed.addActionListener(new ActionListener() { //button action listener
 			public void actionPerformed(ActionEvent e) {
 
-				checkInDate = dateChsrCheckIn.getDate() != null
-						? dateChsrCheckIn.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
-						: null;
+				checkInDate = dateChsrCheckIn.getDate() != null //.getDate() is the way to get the date from the date chooser (calendar)
+						? dateChsrCheckIn.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()  //used a ternary operator (?). variable = (condition) ?
+						: null;																					//true : false
 				checkOutDate = dateChsrCheckOut.getDate() != null
-						? dateChsrCheckOut.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
-						: null;
+						? dateChsrCheckOut.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()   //if the date is not null, retrive the date from the 
+						: null;																					//date chooser,	convert to instant, from instant to timezone,				
+																												// to LocalDate (date lang maiiwan)
+				adult = (int) spnAdult.getValue();			//retrieves the data from the spinner
+				children = (int) spnChildren.getValue();	//dito kukunin ung guests
 
-				adult = (int) spnAdult.getValue();
-				children = (int) spnChildren.getValue();
-
-				numOfGuests = (adult + children);
+				numOfGuests = (adult + children); 	//paga-add 
 
 				if (checkInDate == null || checkOutDate == null) {
 					lblPrompt.setText("Please choose valid dates.");
@@ -152,7 +158,6 @@ public class checkInOut extends JFrame {
 							.setNumOfDays(numberOfDays);
 
 					setVisible(false);
-
 					RoomTypes f3 = new RoomTypes(booking);
 					f3.setVisible(true);
 				}
