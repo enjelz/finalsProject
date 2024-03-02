@@ -1,13 +1,8 @@
 package finalsProject;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import finalsProject.RoomTypes.SharedDataRoomTypes;
-import finalsProject.checkInOut.SharedDataCheckInOut;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -39,25 +34,9 @@ public class ContactInfo extends JFrame {
 	static int randomNum;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ContactInfo frame = new ContactInfo();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public ContactInfo() {
+	public ContactInfo(Booking booking) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 819, 596);
 		contentPane = new JPanel();
@@ -137,12 +116,18 @@ public class ContactInfo extends JFrame {
 		btnConfirm.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				double total = SharedDataRoomTypes.getTotal();
-				double amountDue = Integer.parseInt(txtPay.getText());
-				if (amountDue != total) {
+				double total = booking.getTotalPrice();
+				
+				double amountDue = Double.parseDouble(txtPay.getText());
+				
+				System.out.println(total);
+				System.out.println(amountDue);
+				
+				if (Double.compare(total, amountDue) > 0) {
 					lblError.setText("Enter the same amount as your amount due.");
+					
+					return;
 				} else {
-
 					String incrementedValue = incrementValue("001");
 					System.out.println("Incremented value: " + incrementedValue);
 				}
@@ -289,13 +274,13 @@ public class ContactInfo extends JFrame {
 		lblPleaseNoteYour.setBounds(213, 203, 223, 23);
 		contentPane.add(lblPleaseNoteYour);
 
-		displayPayment();
+		displayPayment(booking);
 
-		LocalDate checkInDate = SharedDataCheckInOut.getCheckInDate();
-		LocalDate checkOutDate = SharedDataCheckInOut.getCheckOutDate();
+		LocalDate checkInDate = booking.getCheckInDate();
+		LocalDate checkOutDate = booking.getCheckOutDate();
 
-		int numOfGuests = SharedDataCheckInOut.getNumOfGuests();
-		long numberOfDays = SharedDataCheckInOut.getNumberOfDays();
+		int numOfGuests = booking.getNumOfGuests();
+		long numberOfDays = booking.getNumOfDays();
 
 		lblDispCheckIn.setText("" + checkInDate);
 		lblDispCheckOut.setText(" to " + checkOutDate);
@@ -311,10 +296,12 @@ public class ContactInfo extends JFrame {
 		} else {
 			lblDispDaysOfStay.setText(numberOfDays + " nights");
 		}
+		
+		BookingStorage.addBooking(booking);
 
 	}
 
-	private void displayPayment() {
+	private void displayPayment(Booking booking) {
 		textAreaPayment.setText("Room: " + RoomTypes.roomType + "\tPhp"
 				+ String.format("%,.2f\n", RoomTypes.previousTotal) + String.join("\n", RoomTypes.selectedAdditionals)
 				+ "\tPhp" + String.format("%,.2f", RoomTypes.totalMassage) + "\nTotal Amount Due: \tPhp"

@@ -61,80 +61,77 @@ public class checkInOut extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblCozyHotel = new JLabel("Cozy Hotel");
 		lblCozyHotel.setFont(new Font("Serif", Font.PLAIN, 26));
 		lblCozyHotel.setBounds(131, 10, 126, 60);
 		contentPane.add(lblCozyHotel);
-		
+
 		JDateChooser dateChsrCheckIn = new JDateChooser();
 		dateChsrCheckIn.setBounds(131, 105, 126, 19);
 		contentPane.add(dateChsrCheckIn);
-		
+
 		JDateChooser dateChsrCheckOut = new JDateChooser();
 		dateChsrCheckOut.setBounds(131, 150, 126, 19);
 		contentPane.add(dateChsrCheckOut);
-		
+
 		JLabel lblCheckInDate = new JLabel("Check-in date:");
 		lblCheckInDate.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCheckInDate.setBounds(132, 91, 84, 13);
 		contentPane.add(lblCheckInDate);
-		
-		
-		
+
 		JLabel lblCheckOutDate = new JLabel("Check-out date:");
 		lblCheckOutDate.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCheckOutDate.setBounds(131, 134, 103, 13);
 		contentPane.add(lblCheckOutDate);
-		
-		
-		
-		SpinnerNumberModel adu = new SpinnerNumberModel(1, 1, null, 1); //initial, minimum, maximum, step size
-		
+
+		SpinnerNumberModel adu = new SpinnerNumberModel(1, 1, null, 1); // initial, minimum, maximum, step size
+
 		JSpinner spnAdult = new JSpinner(adu);
 		spnAdult.setBounds(149, 238, 96, 20);
 		contentPane.add(spnAdult);
-		
+
 		JLabel lblNumGuests = new JLabel("Number of guests:");
 		lblNumGuests.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNumGuests.setBounds(131, 198, 126, 19);
 		contentPane.add(lblNumGuests);
-		
+
 		JLabel lblAdult = new JLabel("Adult:");
 		lblAdult.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblAdult.setBounds(111, 237, 48, 19);
 		contentPane.add(lblAdult);
-		
+
 		lblPrompt = new JLabel("");
 		lblPrompt.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrompt.setForeground(new Color(255, 0, 0));
 		lblPrompt.setBounds(10, 174, 376, 25);
 		contentPane.add(lblPrompt);
-		
+
 		lblPromptChildren = new JLabel("*Ages 12 and below");
 		lblPromptChildren.setBounds(255, 289, 131, 25);
 		contentPane.add(lblPromptChildren);
-		
+
 		SpinnerNumberModel child = new SpinnerNumberModel(0, 0, null, 1);
-		
+
 		JSpinner spnChildren = new JSpinner(child);
 		spnChildren.setBounds(149, 290, 96, 20);
-		contentPane.add(spnChildren);	
-		
-		
-		
-		JButton btnProceed =  new JButton("Proceed");
+		contentPane.add(spnChildren);
+
+		JButton btnProceed = new JButton("Proceed");
 		btnProceed.setBackground(new Color(213, 180, 136));
 		btnProceed.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				checkInDate = dateChsrCheckIn.getDate() != null ? dateChsrCheckIn.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate() : null;
-				checkOutDate = dateChsrCheckOut.getDate() != null ? dateChsrCheckOut.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate() : null;
-				
-				
+
+				checkInDate = dateChsrCheckIn.getDate() != null
+						? dateChsrCheckIn.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+						: null;
+				checkOutDate = dateChsrCheckOut.getDate() != null
+						? dateChsrCheckOut.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+						: null;
+
 				adult = (int) spnAdult.getValue();
-				children =(int) spnChildren.getValue();
-				
+				children = (int) spnChildren.getValue();
+
 				numOfGuests = (adult + children);
 
 				if (checkInDate == null || checkOutDate == null) {
@@ -144,88 +141,30 @@ public class checkInOut extends JFrame {
 				} else if (checkInDate.equals(checkOutDate)) {
 					lblPrompt.setText("The hotel minimum stay is 1 night.");
 				} else {
-						
-						numberOfDaysBetween = ChronoUnit.DAYS.between(checkInDate, checkOutDate);
 
-						// If you want to include both check-in and check-out days in the count:
-						numberOfDays = numberOfDaysBetween++; // Increment by 1
-						
-						SharedDataCheckInOut.setCheckInDate(checkInDate);
-					    SharedDataCheckInOut.setCheckOutDate(checkOutDate);
-					    SharedDataCheckInOut.setAdult(adult);
-					    SharedDataCheckInOut.setChildren(children);
-					    SharedDataCheckInOut.setNumOfGuests(numOfGuests);
-					    SharedDataCheckInOut.setNumOfDays(numberOfDays);
-					    
-				    	setVisible(false);
-						RoomTypes f3 = new RoomTypes();
-						f3.setVisible(true);
-				    }	
+					numberOfDaysBetween = ChronoUnit.DAYS.between(checkInDate, checkOutDate);
+
+					// If you want to include both check-in and check-out days in the count:
+					numberOfDays = numberOfDaysBetween++; // Increment by 1
+
+					Booking booking = new Booking().setCheckInDate(checkInDate).setCheckOutDate(checkOutDate)
+							.setAdult(adult).setChildren(children).setNumOfGuests(numOfGuests)
+							.setNumOfDays(numberOfDays);
+
+					setVisible(false);
+
+					RoomTypes f3 = new RoomTypes(booking);
+					f3.setVisible(true);
+				}
 			}
 		});
 		btnProceed.setBounds(149, 335, 85, 21);
 		contentPane.add(btnProceed);
-		
+
 		JLabel lblChildren = new JLabel("Children:");
 		lblChildren.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblChildren.setBounds(98, 289, 48, 19);
 		contentPane.add(lblChildren);
-		
-	}
-	public class SharedDataCheckInOut {
-	    private static LocalDate checkInDate;
-	    private static LocalDate checkOutDate;
-	    private static int adult;
-	    private static int children;
-	    private static long numberOfDays;
-	    private static int numOfGuests;
 
-	    public static LocalDate getCheckInDate() {
-	        return checkInDate;
-	    }
-
-	    public static void setCheckInDate(LocalDate checkInDate) {
-	        SharedDataCheckInOut.checkInDate = checkInDate;
-	    }
-
-	    public static LocalDate getCheckOutDate() {
-	        return checkOutDate;
-	    }
-
-	    public static void setCheckOutDate(LocalDate checkOutDate) {
-	        SharedDataCheckInOut.checkOutDate = checkOutDate;
-	    }
-
-	    public static int getAdult() {
-	        return adult;
-	    }
-
-	    public static void setAdult(int adult) {
-	        SharedDataCheckInOut.adult = adult;
-	    }
-
-	    public static int getChildren() {
-	        return children;
-	    }
-
-	    public static void setChildren(int children) {
-	        SharedDataCheckInOut.children = children;
-	    }
-
-	    public static long getNumberOfDays() {
-	        return numberOfDays;
-	    }
-
-	    public static void setNumOfDays(long numberOfDays) {
-	        SharedDataCheckInOut.numberOfDays = numberOfDays;
-	    }
-
-	    public static int getNumOfGuests() {
-	        return numOfGuests;
-	    }
-
-	    public static void setNumOfGuests(int numOfGuests) {
-	        SharedDataCheckInOut.numOfGuests = numOfGuests;
-	    }
 	}
 }
