@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 public class ThankYou extends JFrame {
 
@@ -83,28 +85,28 @@ public class ThankYou extends JFrame {
 		lblCheckIn.setBounds(175, 173, 72, 38);
 		panel.add(lblCheckIn);
 
-		JLabel lblThankYouCheckInOut = new JLabel("New label");
-		lblThankYouCheckInOut.setBounds(175, 204, 46, 14);
-		panel.add(lblThankYouCheckInOut);
+		JLabel lblThankYouCheckIn = new JLabel("New label");
+		lblThankYouCheckIn.setBounds(175, 204, 103, 14);
+		panel.add(lblThankYouCheckIn);
 
 		JLabel lblTotal = new JLabel("Total:");
 		lblTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTotal.setFont(new Font("Serif", Font.PLAIN, 12));
-		lblTotal.setBounds(292, 181, 37, 23);
+		lblTotal.setBounds(317, 181, 29, 23);
 		panel.add(lblTotal);
 
 		JLabel lblThankYouTotalAmount = new JLabel("New label");
-		lblThankYouTotalAmount.setBounds(302, 204, 72, 14);
+		lblThankYouTotalAmount.setBounds(319, 204, 72, 14);
 		panel.add(lblThankYouTotalAmount);
 		lblThankYouTotalAmount.setText("" + ContactInfo.tqtotal);
 
 		JLabel lblNewLabel_2 = new JLabel("Duration:");
 		lblNewLabel_2.setFont(new Font("Serif", Font.PLAIN, 12));
-		lblNewLabel_2.setBounds(404, 185, 46, 14);
+		lblNewLabel_2.setBounds(419, 185, 46, 14);
 		panel.add(lblNewLabel_2);
 
 		JLabel lblNightsStay = new JLabel("New label");
-		lblNightsStay.setBounds(404, 204, 46, 14);
+		lblNightsStay.setBounds(419, 204, 72, 14);
 		panel.add(lblNightsStay);
 
 		JButton btnNewButton = new JButton("Home");
@@ -117,28 +119,29 @@ public class ThankYou extends JFrame {
 		panel.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.ITALIC, 11));
 
-		JLabel lblNewLabel_3 = new JLabel("Deatils:");
-		lblNewLabel_3.setFont(new Font("Serif", Font.PLAIN, 12));
-		lblNewLabel_3.setBounds(56, 240, 63, 14);
-		panel.add(lblNewLabel_3);
-
 		JLabel lblNewLabel_3_1 = new JLabel("Remarks:");
 		lblNewLabel_3_1.setFont(new Font("Serif", Font.PLAIN, 12));
-		lblNewLabel_3_1.setBounds(328, 241, 63, 14);
+		lblNewLabel_3_1.setBounds(56, 242, 63, 14);
 		panel.add(lblNewLabel_3_1);
 
 		JLabel lblThankYouRemarks = new JLabel("");
-		lblThankYouRemarks.setBounds(328, 259, 173, 35);
+		lblThankYouRemarks.setBounds(51, 259, 472, 35);
 		panel.add(lblThankYouRemarks);
 
-		JLabel lblThankYouAdditional = new JLabel("");
-		lblThankYouAdditional.setBounds(56, 259, 46, 14);
-		panel.add(lblThankYouAdditional);
-
+		JLabel lblThankYouCheckOut = new JLabel("null");
+		lblThankYouCheckOut.setBounds(175, 222, 103, 14);
+		panel.add(lblThankYouCheckOut);
+		
+		lblThankYouBookingNum.setText(String.format("%03d" ,booking.getId()));
+		lblThankYouCheckIn.setText(booking.getCheckInDate()+" to");
+		lblThankYouCheckOut.setText(booking.getCheckInDate()+"");
+		lblNightsStay.setText(booking.getNumOfDays() + " Nights");
+		lblThankYouTotalAmount.setText(String.format("%,.2f", booking.getTotalPrice()));
 		lblThankYouRemarks.setText(ContactInfo.remarks);
 		
-		lblThankYouBookingNum.setText(booking.getId()+"");
-
+		
+	
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

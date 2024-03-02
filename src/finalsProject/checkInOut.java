@@ -85,7 +85,7 @@ public class checkInOut extends JFrame {
 		lblCheckOutDate.setBounds(131, 134, 103, 13);
 		contentPane.add(lblCheckOutDate);
 
-		SpinnerNumberModel adu = new SpinnerNumberModel(1, 1, null, 1); // initial, minimum, maximum, step size
+		SpinnerNumberModel adu = new SpinnerNumberModel(1, 1, 4, 1); // initial, minimum, maximum, step size
 
 		JSpinner spnAdult = new JSpinner(adu);
 		spnAdult.setBounds(149, 238, 96, 20);
@@ -111,7 +111,7 @@ public class checkInOut extends JFrame {
 		lblPromptChildren.setBounds(255, 289, 131, 25);
 		contentPane.add(lblPromptChildren);
 
-		SpinnerNumberModel child = new SpinnerNumberModel(0, 0, null, 1);
+		SpinnerNumberModel child = new SpinnerNumberModel(0, 0, 2, 1);
 
 		JSpinner spnChildren = new JSpinner(child);
 		spnChildren.setBounds(149, 290, 96, 20);

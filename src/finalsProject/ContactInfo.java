@@ -120,16 +120,12 @@ public class ContactInfo extends JFrame {
 				
 				double amountDue = Double.parseDouble(txtPay.getText());
 				
-				System.out.println(total);
-				System.out.println(amountDue);
-				
 				if (Double.compare(total, amountDue) > 0) {
 					lblError.setText("Enter the same amount as your amount due.");
 					
 					return;
 				} else {
-					String incrementedValue = incrementValue("001");
-					System.out.println("Incremented value: " + incrementedValue);
+					
 				}
 
 				name = txtFName.getText();
@@ -138,11 +134,6 @@ public class ContactInfo extends JFrame {
 				remarks = txtAdditional.getText();
 				tqtotal = Double.parseDouble(txtPay.getText());
 
-				SharedDataContactInfo.setFullName(txtFName.getText());
-				SharedDataContactInfo.setContactNumber(txtCNumber.getText());
-				SharedDataContactInfo.setEmailAddress(txtEmailAdd.getText());
-				SharedDataContactInfo.setAdditionalDetails(txtAdditional.getText());
-				SharedDataContactInfo.setTotalAmountDue(Double.parseDouble(txtPay.getText()));
 
 				setVisible(false);
 				ThankYou f5 = new ThankYou(booking);
@@ -150,11 +141,7 @@ public class ContactInfo extends JFrame {
 			}
 
 			// Method to increment a given value in the format "###"
-			private String incrementValue(String value) {
-				int num = Integer.parseInt(value);
-				num++; // Incrementing the value by one
-				return String.format("%03d", num); // Formatting the incremented value to have three digits
-			}
+			
 
 		});
 		btnConfirm.setBounds(62, 419, 164, 23);
@@ -307,54 +294,4 @@ public class ContactInfo extends JFrame {
 				+ "\tPhp" + String.format("%,.2f", RoomTypes.totalMassage) + "\nTotal Amount Due: \tPhp"
 				+ String.format("%,.2f", RoomTypes.total));
 	}
-
-	public class SharedDataContactInfo {
-
-		private static String fullName;
-		private static String contactNumber;
-		private static String emailAddress;
-		private static String additionalDetails;
-		private static double totalAmountDue;
-
-		public static String getFullName() {
-			return fullName;
-		}
-
-		public static void setFullName(String fullName) {
-			SharedDataContactInfo.fullName = fullName;
-		}
-
-		public static String getContactNumber() {
-			return contactNumber;
-		}
-
-		public static void setContactNumber(String contactNumber) {
-			SharedDataContactInfo.contactNumber = contactNumber;
-		}
-
-		public static String getEmailAddress() {
-			return emailAddress;
-		}
-
-		public static void setEmailAddress(String emailAddress) {
-			SharedDataContactInfo.emailAddress = emailAddress;
-		}
-
-		public static String getAdditionalDetails() {
-			return additionalDetails;
-		}
-
-		public static void setAdditionalDetails(String additionalDetails) {
-			SharedDataContactInfo.additionalDetails = additionalDetails;
-		}
-
-		public static double getTotalAmountDue() {
-			return totalAmountDue;
-		}
-
-		public static void setTotalAmountDue(double totalAmountDue) {
-			SharedDataContactInfo.totalAmountDue = totalAmountDue;
-		}
-	}
-
 }

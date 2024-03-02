@@ -39,7 +39,7 @@ public class RoomTypes extends JFrame {
 	private static JLabel lblDispTotal;
 	private JLabel lblBeforepm;
 	private JLabel lblAddons;
-	public JCheckBox chckbxBed;
+	public static JCheckBox chckbxBed;
 	private JCheckBox chckbxPillow;
 	private JCheckBox chckbxBlanket;
 	static double total;
@@ -380,7 +380,7 @@ public class RoomTypes extends JFrame {
 		panelAdditionals.add(lblMassageServices);
 
 		chckbxBed = new JCheckBox("Bed");
-		chckbxBed.setBounds(53, 56, 80, 13);
+		chckbxBed.setBounds(53, 53, 80, 13);
 		panelAdditionals.add(chckbxBed);
 
 		chckbxPillow = new JCheckBox("Pillow");
@@ -435,10 +435,13 @@ public class RoomTypes extends JFrame {
 		lblGuestsMassage.setFont(new Font("Serif", Font.PLAIN, 12));
 		lblGuestsMassage.setBounds(53, 381, 102, 25);
 		panelAdditionals.add(lblGuestsMassage);
+		
+		
 
 		chckbxBlanket.addItemListener(new CheckBoxListener());
 		chckbxPillow.addItemListener(new CheckBoxListener());
 		chckbxBed.addItemListener(new CheckBoxListener());
+		
 
 		btnLuxuryBook = new JButton("BOOK");
 		btnLuxuryBook.setBounds(702, 52, 85, 21);

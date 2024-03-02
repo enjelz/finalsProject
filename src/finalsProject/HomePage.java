@@ -70,20 +70,6 @@ public class HomePage extends JFrame {
 		lblHms.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHms.setFont(new Font("Serif", Font.PLAIN, 25));
 
-		JButton btnAboutUs = new JButton("");
-		btnAboutUs.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnAboutUs.setIcon(new ImageIcon("C:\\Users\\User\\Downloads\\icons8-about-us-24.png"));
-		btnAboutUs.setBounds(276, 11, 25, 25);
-		panel.add(btnAboutUs);
-
-		JLabel lblAboutUs = new JLabel("About Us");
-		lblAboutUs.setFont(new Font("Sylfaen", Font.ITALIC, 14));
-		lblAboutUs.setBounds(211, 16, 64, 20);
-		panel.add(lblAboutUs);
-
 		JLabel lblHomePic = new JLabel("New label");
 		lblHomePic.setBounds(-87, 0, 448, 427);
 		contentPane.add(lblHomePic);
