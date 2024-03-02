@@ -1,10 +1,11 @@
 package finalsProject;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import finalsProject.BookingStorage.RoomType;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -64,25 +65,9 @@ public class RoomTypes extends JFrame {
 	public static int massageGuests;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RoomTypes frame = new RoomTypes();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public RoomTypes() {
+	public RoomTypes(Booking booking) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1439, 591);
 		contentPane = new JPanel();
@@ -163,11 +148,14 @@ public class RoomTypes extends JFrame {
 		JButton btnProceed = new JButton("Proceed");
 		btnProceed.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				SharedDataRoomTypes.setTotal(total);
+				booking.setTotalPrice(total);
+				
+				if (booking.getRoomType() == null) {
+					return;
+				}
 
 				setVisible(false);
-				ContactInfo f4 = new ContactInfo();
+				ContactInfo f4 = new ContactInfo(booking);
 				f4.setVisible(true);
 			}
 		});
@@ -236,9 +224,10 @@ public class RoomTypes extends JFrame {
 
 		btnStandardBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SharedDataRoomTypes.setSelectedRoomType(SharedDataRoomTypes.RoomType.STANDARD);
+				booking.setRoomType(RoomType.STANDARD);
 
 				lblDispRoomType.setText("Room Type: Standard");
+
 				roomType = "Standard";
 				total = total + (checkInOut.numberOfDays * 5000) - previousTotal;
 
@@ -316,7 +305,7 @@ public class RoomTypes extends JFrame {
 		btnDeluxeBook.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				SharedDataRoomTypes.setSelectedRoomType(SharedDataRoomTypes.RoomType.DELUXE);
+				booking.setRoomType(RoomType.DELUXE);
 
 				lblDispRoomType.setText("Room Type: Deluxe");
 				roomType = "Deluxe\t";
@@ -458,7 +447,7 @@ public class RoomTypes extends JFrame {
 
 		btnLuxuryBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SharedDataRoomTypes.setSelectedRoomType(SharedDataRoomTypes.RoomType.LUXURY);
+				booking.setRoomType(RoomType.LUXURY);
 
 				lblDispRoomType.setText("Room Type: Luxury");
 				roomType = "Luxury\t";
@@ -559,7 +548,7 @@ public class RoomTypes extends JFrame {
 
 		toDisable();
 		display();
-		updateAvailability();
+		updateAvailability(booking);
 
 	}
 
@@ -653,53 +642,29 @@ public class RoomTypes extends JFrame {
 
 	}
 
-	public class SharedDataRoomTypes {
+	public void updateAvailability(Booking booking) {
+		boolean isLuxuryAvailable = BookingStorage.isBookingAvailable(RoomType.LUXURY, booking.getCheckInDate(),
+				booking.getCheckOutDate());
 
-		private static double total;
+		boolean isDeluxeAvailable = BookingStorage.isBookingAvailable(RoomType.DELUXE, booking.getCheckInDate(),
+				booking.getCheckOutDate());
 
-		public static double getTotal() {
-			return total;
+		boolean isStandardAvailable = BookingStorage.isBookingAvailable(RoomType.STANDARD, booking.getCheckInDate(),
+				booking.getCheckOutDate());
+
+		if (!isLuxuryAvailable) {
+			btnLuxuryBook.setEnabled(false);
+			lblLuxuryStatus.setText("Unnavailable");
 		}
 
-		public static void setTotal(double total) {
-			SharedDataRoomTypes.total = total;
+		if (!isDeluxeAvailable) {
+			btnDeluxeBook.setEnabled(false);
+			lblDeluxeStatus.setText("Unnavailable");
 		}
 
-		public enum RoomType {
-			STANDARD, DELUXE, LUXURY
-		}
-
-		private static RoomType selectedRoomType;
-
-		public static RoomType getSelectedRoomType() {
-			return selectedRoomType;
-		}
-
-		public static void setSelectedRoomType(RoomType roomType) {
-			selectedRoomType = roomType;
-		}
-
-	}
-
-	public void updateAvailability() {
-		SharedDataRoomTypes.RoomType selectedRoomType = SharedDataRoomTypes.getSelectedRoomType();
-
-		if (selectedRoomType != null) {
-			switch (selectedRoomType) {
-			case LUXURY:
-				btnLuxuryBook.setEnabled(false);
-				lblLuxuryStatus.setText("Unnavailable");
-				break;
-			case DELUXE:
-				btnDeluxeBook.setEnabled(false);
-				lblDeluxeStatus.setText("Unnavailable");
-				break;
-			case STANDARD:
-				btnStandardBook.setEnabled(false);
-				lblStandardStatus.setText("Unnavailable");
-				break;
-			// Add more cases if you have additional room types
-			}
+		if (!isStandardAvailable) {
+			btnStandardBook.setEnabled(false);
+			lblStandardStatus.setText("Unnavailable");
 		}
 	}
 }
