@@ -37,7 +37,7 @@ public class RoomTypes extends JFrame {
 	private JLabel lblDispRoomType;
 	private JLabel lblDispDaysOfStay;
 	private static JLabel lblDispTotal;
-	private JLabel lblBeforepm;
+	private JLabel lblCheckOutTime;
 	private JLabel lblAddons;
 	public static JCheckBox chckbxBed;
 	private JCheckBox chckbxPillow;
@@ -63,6 +63,8 @@ public class RoomTypes extends JFrame {
 	public static String roomType;
 	public static double totalMassage;
 	public static int massageGuests;
+	public static List<String> selectedAdditionals = new ArrayList<>();
+
 
 	/**
 	 * Create the frame.
@@ -177,10 +179,10 @@ public class RoomTypes extends JFrame {
 		lblCheckout.setBounds(149, 76, 72, 13);
 		panelYourStay.add(lblCheckout);
 
-		lblBeforepm = new JLabel("Before 12:00PM");
-		lblBeforepm.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblBeforepm.setBounds(148, 100, 97, 13);
-		panelYourStay.add(lblBeforepm);
+		lblCheckOutTime = new JLabel("Before 12:00PM");
+		lblCheckOutTime.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblCheckOutTime.setBounds(148, 100, 97, 13);
+		panelYourStay.add(lblCheckOutTime);
 
 		lblAddons = new JLabel("Add-ons:");
 		lblAddons.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 12));
@@ -435,8 +437,6 @@ public class RoomTypes extends JFrame {
 		lblGuestsMassage.setBounds(53, 381, 102, 25);
 		panelAdditionals.add(lblGuestsMassage);
 		
-		
-
 		chckbxBlanket.addItemListener(new CheckBoxListener());
 		chckbxPillow.addItemListener(new CheckBoxListener());
 		chckbxBed.addItemListener(new CheckBoxListener());
@@ -531,8 +531,8 @@ public class RoomTypes extends JFrame {
 		btnConfirmMassage.setBounds(153, 417, 89, 23);
 		panelAdditionals.add(btnConfirmMassage);
 
-		JButton btnRadioBtnClear = new JButton("Clear");
-		btnRadioBtnClear.addActionListener(new ActionListener() {
+		JButton btnClearMassage = new JButton("Clear");
+		btnClearMassage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				massageButtonGroup.clearSelection();
 				total -= previousTotalMassageCost;
@@ -545,8 +545,8 @@ public class RoomTypes extends JFrame {
 				updateTotal();
 			}
 		});
-		btnRadioBtnClear.setBounds(53, 417, 80, 23);
-		panelAdditionals.add(btnRadioBtnClear);
+		btnClearMassage.setBounds(53, 417, 80, 23);
+		panelAdditionals.add(btnClearMassage);
 
 		toDisable();
 		display();
@@ -554,8 +554,7 @@ public class RoomTypes extends JFrame {
 
 	}
 
-	public static List<String> selectedAdditionals = new ArrayList<>();
-
+	
 	private class CheckBoxListener implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent e) {
