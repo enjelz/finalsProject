@@ -2,6 +2,7 @@ package finalsProject;
 
 import java.time.LocalDate;
 
+
 import finalsProject.BookingStorage.RoomType;
 
 
@@ -20,6 +21,7 @@ public class Booking {
 	private double totalPrice;
 	
 	private RoomType roomType;
+
 	
 	public int getId() {
 		return this.id;

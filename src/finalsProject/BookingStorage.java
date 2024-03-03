@@ -25,8 +25,9 @@ public class BookingStorage {
 	            }
 			}
 		}
-
+		
 		return true;
+		
 	}
 
 	public static void addBooking(Booking booking) {

@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
@@ -137,6 +138,7 @@ public class ThankYou extends JFrame {
 			lblNightsStay.setText(booking.getNumOfDays() + " Nights");
 			lblThankYouTotalAmount.setText(String.format("%,.2f", booking.getTotalPrice()));
 			lblThankYouRemarks.setText(ContactInfo.remarks);
+			
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

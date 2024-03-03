@@ -57,6 +57,7 @@ public class RoomTypes extends JFrame {
 	private JButton btnLuxuryBook;
 	private JButton btnStandardBook;
 	private JButton btnDeluxeBook;
+	private JButton btnClearMassage;
 	private static JLabel lblStandardStatus;
 	private static JLabel lblDeluxeStatus;
 	private static JLabel lblLuxuryStatus;
@@ -531,7 +532,7 @@ public class RoomTypes extends JFrame {
 		btnConfirmMassage.setBounds(153, 417, 89, 23);
 		panelAdditionals.add(btnConfirmMassage);
 
-		JButton btnClearMassage = new JButton("Clear");
+		btnClearMassage = new JButton("Clear");
 		btnClearMassage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				massageButtonGroup.clearSelection();
@@ -605,6 +606,7 @@ public class RoomTypes extends JFrame {
 		spnGuests.setEnabled(false);
 
 		btnConfirmMassage.setEnabled(false);
+		btnClearMassage.setEnabled(false);
 	}
 
 	public void toEnable() {
@@ -619,6 +621,7 @@ public class RoomTypes extends JFrame {
 		spnGuests.setEnabled(true);
 
 		btnConfirmMassage.setEnabled(true);
+		btnClearMassage.setEnabled(true);
 	}
 
 	public void updateTotal() {
