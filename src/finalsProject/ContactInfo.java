@@ -120,13 +120,12 @@ public class ContactInfo extends JFrame {
 				
 				double amountDue = Double.parseDouble(txtPay.getText());
 				
-				if (Double.compare(total, amountDue) > 0) {
+				if (total != amountDue) {
 					lblError.setText("Enter the same amount as your amount due.");
 					
-					return;
 				} else {
 					
-				}
+				
 
 				name = txtFName.getText();
 				contact = txtCNumber.getText();
@@ -138,9 +137,9 @@ public class ContactInfo extends JFrame {
 				setVisible(false);
 				ThankYou f5 = new ThankYou(booking);
 				f5.setVisible(true);
+				}
 			}
-
-			// Method to increment a given value in the format "###"
+			
 			
 
 		});

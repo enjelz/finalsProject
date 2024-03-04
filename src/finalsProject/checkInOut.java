@@ -153,8 +153,10 @@ public class checkInOut extends JFrame {
 					// If you want to include both check-in and check-out days in the count:
 					numberOfDays = numberOfDaysBetween++; // Increment by 1
 
-					Booking booking = new Booking().setCheckInDate(checkInDate).setCheckOutDate(checkOutDate)
-							.setAdult(adult).setChildren(children).setNumOfGuests(numOfGuests)
+					Booking booking = new Booking().setCheckInDate(checkInDate)
+							.setCheckOutDate(checkOutDate)
+							.setAdult(adult).setChildren(children)
+							.setNumOfGuests(numOfGuests)
 							.setNumOfDays(numberOfDays);
 
 					setVisible(false);
