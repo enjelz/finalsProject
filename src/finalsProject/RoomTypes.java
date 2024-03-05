@@ -162,7 +162,7 @@ public class RoomTypes extends JFrame {
 				f4.setVisible(true);
 			}
 		});
-		btnProceed.setBounds(81, 406, 113, 21);
+		btnProceed.setBounds(132, 407, 113, 21);
 		panelYourStay.add(btnProceed);
 
 		lblDispDaysOfStay = new JLabel("");
@@ -488,6 +488,17 @@ public class RoomTypes extends JFrame {
 		textAreaAddOns.setBackground(new Color(241, 238, 223));
 		textAreaAddOns.setBounds(81, 237, 164, 108);
 		panelYourStay.add(textAreaAddOns);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				checkInOut f2 = new checkInOut();
+				f2.setVisible(true);
+			}
+		});
+		btnBack.setBounds(26, 406, 89, 23);
+		panelYourStay.add(btnBack);
 
 		btnConfirmMassage = new JButton("Confirm");
 

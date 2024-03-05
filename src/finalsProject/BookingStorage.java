@@ -25,7 +25,6 @@ public class BookingStorage {
 	            }
 			}
 		}
-		
 		return true;
 		
 	}
