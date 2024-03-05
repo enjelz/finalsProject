@@ -400,22 +400,12 @@ public class RoomTypes extends JFrame {
 
 		JLabel lblPhpFor = new JLabel("Php 2,000 for 60 minutes");
 		lblPhpFor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblPhpFor.setBounds(106, 207, 146, 13);
+		lblPhpFor.setBounds(106, 191, 146, 13);
 		panelAdditionals.add(lblPhpFor);
-
-		JLabel lblDeets = new JLabel("Deets**");
-		lblDeets.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblDeets.setBounds(106, 191, 146, 13);
-		panelAdditionals.add(lblDeets);
-
-		JLabel lblDeets_1 = new JLabel("Deets**");
-		lblDeets_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblDeets_1.setBounds(106, 260, 146, 13);
-		panelAdditionals.add(lblDeets_1);
 
 		JLabel lblPhpFor_1 = new JLabel("Php 2,500 for 60 minutes");
 		lblPhpFor_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblPhpFor_1.setBounds(106, 276, 146, 13);
+		lblPhpFor_1.setBounds(106, 260, 146, 13);
 		panelAdditionals.add(lblPhpFor_1);
 
 		JLabel lblDeets_1_1 = new JLabel("Apricot Scrub with Dead Sea Salt");
