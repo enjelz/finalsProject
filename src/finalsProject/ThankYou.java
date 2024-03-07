@@ -115,7 +115,7 @@ public class ThankYou extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel(
 				"Thank you for choosing Cozy Hotel! We can't wait to make your stay exceptional.");
-		lblNewLabel_1.setBounds(101, 305, 400, 14);
+		lblNewLabel_1.setBounds(79, 305, 422, 14);
 		panel.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.ITALIC, 11));
 
@@ -134,8 +134,8 @@ public class ThankYou extends JFrame {
 		
 			lblThankYouBookingNum.setText(String.format("%03d" ,booking.getId()));
 			lblThankYouCheckIn.setText(booking.getCheckInDate()+" to");
-			lblThankYouCheckOut.setText(booking.getCheckInDate()+"");
-			lblNightsStay.setText(booking.getNumOfDays() + " Nights");
+			lblThankYouCheckOut.setText(booking.getCheckOutDate()+"");
+			lblNightsStay.setText(booking.getNumOfDays() + " Night/s");
 			lblThankYouTotalAmount.setText(String.format("%,.2f", booking.getTotalPrice()));
 			lblThankYouRemarks.setText(ContactInfo.remarks);
 			
