@@ -62,7 +62,7 @@ public class ThankYou extends JFrame {
 
 		lblDispPleaseName = new JLabel(
 				"");
-		lblDispPleaseName.setBounds(28, 110, 508, 14);
+		lblDispPleaseName.setBounds(39, 110, 508, 14);
 		panel.add(lblDispPleaseName);
 		lblDispPleaseName.setFont(new Font("Tahoma", Font.PLAIN, 11));
 
