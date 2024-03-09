@@ -162,7 +162,7 @@ public class RoomTypes extends JFrame {
 				f4.setVisible(true);
 			}
 		});
-		btnProceed.setBounds(81, 406, 113, 21);
+		btnProceed.setBounds(132, 407, 113, 21);
 		panelYourStay.add(btnProceed);
 
 		lblDispDaysOfStay = new JLabel("");
@@ -400,22 +400,12 @@ public class RoomTypes extends JFrame {
 
 		JLabel lblPhpFor = new JLabel("Php 2,000 for 60 minutes");
 		lblPhpFor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblPhpFor.setBounds(106, 207, 146, 13);
+		lblPhpFor.setBounds(106, 191, 146, 13);
 		panelAdditionals.add(lblPhpFor);
-
-		JLabel lblDeets = new JLabel("Deets**");
-		lblDeets.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblDeets.setBounds(106, 191, 146, 13);
-		panelAdditionals.add(lblDeets);
-
-		JLabel lblDeets_1 = new JLabel("Deets**");
-		lblDeets_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblDeets_1.setBounds(106, 260, 146, 13);
-		panelAdditionals.add(lblDeets_1);
 
 		JLabel lblPhpFor_1 = new JLabel("Php 2,500 for 60 minutes");
 		lblPhpFor_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblPhpFor_1.setBounds(106, 276, 146, 13);
+		lblPhpFor_1.setBounds(106, 260, 146, 13);
 		panelAdditionals.add(lblPhpFor_1);
 
 		JLabel lblDeets_1_1 = new JLabel("Apricot Scrub with Dead Sea Salt");
@@ -488,6 +478,17 @@ public class RoomTypes extends JFrame {
 		textAreaAddOns.setBackground(new Color(241, 238, 223));
 		textAreaAddOns.setBounds(81, 237, 164, 108);
 		panelYourStay.add(textAreaAddOns);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				checkInOut f2 = new checkInOut();
+				f2.setVisible(true);
+			}
+		});
+		btnBack.setBounds(26, 406, 89, 23);
+		panelYourStay.add(btnBack);
 
 		btnConfirmMassage = new JButton("Confirm");
 

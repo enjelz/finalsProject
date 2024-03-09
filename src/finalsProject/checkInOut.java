@@ -148,7 +148,8 @@ public class checkInOut extends JFrame {
 					lblPrompt.setText("The hotel minimum stay is 1 night.");
 				} else {
 
-					numberOfDaysBetween = ChronoUnit.DAYS.between(checkInDate, checkOutDate);
+					numberOfDaysBetween = ChronoUnit.DAYS.between(checkInDate, checkOutDate); 
+					//set numberOfDaysBetween = checkOutDate - checkInDate
 
 					// If you want to include both check-in and check-out days in the count:
 					numberOfDays = numberOfDaysBetween++; // Increment by 1
