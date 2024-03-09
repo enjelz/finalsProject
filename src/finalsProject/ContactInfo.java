@@ -51,7 +51,7 @@ public class ContactInfo extends JFrame {
 		lblContactInfo.setBounds(26, 33, 242, 29);
 		contentPane.add(lblContactInfo);
 
-		JLabel lblFName = new JLabel("Full Name:");
+		JLabel lblFName = new JLabel("Name:");
 		lblFName.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblFName.setBounds(26, 79, 62, 23);
 		contentPane.add(lblFName);
