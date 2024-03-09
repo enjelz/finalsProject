@@ -201,11 +201,6 @@ public class RoomTypes extends JFrame {
 		panelStandard.add(lblStandard);
 		lblStandard.setFont(new Font("Tahoma", Font.BOLD, 15));
 
-		JLabel lblCapStandard = new JLabel("Maximum of 1 person only.");
-		lblCapStandard.setBounds(145, 62, 187, 13);
-		panelStandard.add(lblCapStandard);
-		lblCapStandard.setFont(new Font("Tahoma", Font.PLAIN, 12));
-
 		JLabel lblRateStandard = new JLabel("P5,000.00");
 		lblRateStandard.setBounds(366, 45, 114, 24);
 		panelStandard.add(lblRateStandard);
@@ -223,6 +218,11 @@ public class RoomTypes extends JFrame {
 		btnStandardBook.setBounds(703, 44, 85, 21);
 		panelStandard.add(btnStandardBook);
 		btnStandardBook.setBackground(new Color(240, 240, 240));
+		
+		JLabel lblSqm = new JLabel("20 sqm | 1 double");
+		lblSqm.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblSqm.setBounds(145, 70, 187, 13);
+		panelStandard.add(lblSqm);
 
 		btnStandardBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -278,13 +278,13 @@ public class RoomTypes extends JFrame {
 		lblPicDeluxe.setBounds(20, 11, 114, 104);
 		panelDeluxe.add(lblPicDeluxe);
 
-		JLabel lblCapDeluxe = new JLabel("Maximum of 2 persons only.");
-		lblCapDeluxe.setBounds(144, 70, 187, 13);
+		JLabel lblCapDeluxe = new JLabel("30 sqm | 1 queen");
+		lblCapDeluxe.setBounds(144, 58, 187, 13);
 		panelDeluxe.add(lblCapDeluxe);
 		lblCapDeluxe.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
 		JLabel lblDeluxe = new JLabel("Deluxe");
-		lblDeluxe.setBounds(144, 49, 114, 13);
+		lblDeluxe.setBounds(144, 34, 114, 24);
 		panelDeluxe.add(lblDeluxe);
 		lblDeluxe.setFont(new Font("Tahoma", Font.BOLD, 15));
 
@@ -304,6 +304,16 @@ public class RoomTypes extends JFrame {
 		btnDeluxeBook.setBounds(703, 47, 85, 21);
 		panelDeluxe.add(btnDeluxeBook);
 		btnDeluxeBook.setBackground(new Color(240, 240, 240));
+		
+		JLabel lblCapDeluxe_2 = new JLabel("Comes with Alexa features");
+		lblCapDeluxe_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblCapDeluxe_2.setBounds(144, 89, 187, 13);
+		panelDeluxe.add(lblCapDeluxe_2);
+		
+		JLabel lblCapDeluxe_2_1 = new JLabel("Mini-fridge, exclusive lounges ");
+		lblCapDeluxe_2_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblCapDeluxe_2_1.setBounds(144, 74, 187, 13);
+		panelDeluxe.add(lblCapDeluxe_2_1);
 		btnDeluxeBook.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -334,13 +344,8 @@ public class RoomTypes extends JFrame {
 		lblRateLuxury.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRateLuxury.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
-		JLabel lblMaximumOf = new JLabel("Maximum of 4 persons only.");
-		lblMaximumOf.setBounds(140, 77, 187, 13);
-		panelLuxury.add(lblMaximumOf);
-		lblMaximumOf.setFont(new Font("Tahoma", Font.PLAIN, 12));
-
 		JLabel lblLuxury = new JLabel("Luxury");
-		lblLuxury.setBounds(140, 47, 114, 26);
+		lblLuxury.setBounds(140, 36, 114, 28);
 		panelLuxury.add(lblLuxury);
 		lblLuxury.setFont(new Font("Tahoma", Font.BOLD, 15));
 
@@ -405,7 +410,7 @@ public class RoomTypes extends JFrame {
 
 		JLabel lblPhpFor_1 = new JLabel("Php 2,500 for 60 minutes");
 		lblPhpFor_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblPhpFor_1.setBounds(106, 260, 146, 13);
+		lblPhpFor_1.setBounds(106, 271, 146, 13);
 		panelAdditionals.add(lblPhpFor_1);
 
 		JLabel lblDeets_1_1 = new JLabel("Apricot Scrub with Dead Sea Salt");
@@ -437,6 +442,21 @@ public class RoomTypes extends JFrame {
 		btnLuxuryBook.setBounds(702, 52, 85, 21);
 		panelLuxury.add(btnLuxuryBook);
 		btnLuxuryBook.setBackground(new Color(240, 240, 240));
+		
+		JLabel lblCapDeluxe_1 = new JLabel("Comes with Alexa features");
+		lblCapDeluxe_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblCapDeluxe_1.setBounds(140, 89, 187, 13);
+		panelLuxury.add(lblCapDeluxe_1);
+		
+		JLabel lblSqm_1 = new JLabel("50 sqm | 1 king");
+		lblSqm_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblSqm_1.setBounds(140, 60, 187, 13);
+		panelLuxury.add(lblSqm_1);
+		
+		JLabel lblCapDeluxe_1_1 = new JLabel("Comes with a private balcony");
+		lblCapDeluxe_1_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblCapDeluxe_1_1.setBounds(140, 75, 187, 13);
+		panelLuxury.add(lblCapDeluxe_1_1);
 
 		btnLuxuryBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -549,6 +569,11 @@ public class RoomTypes extends JFrame {
 		});
 		btnClearMassage.setBounds(53, 417, 80, 23);
 		panelAdditionals.add(btnClearMassage);
+		
+		JLabel lblPhpFor_1_2 = new JLabel("Scented Oils ");
+		lblPhpFor_1_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblPhpFor_1_2.setBounds(106, 258, 146, 14);
+		panelAdditionals.add(lblPhpFor_1_2);
 
 		toDisable();
 		display();
