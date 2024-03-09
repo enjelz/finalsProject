@@ -96,7 +96,7 @@ public class ContactInfo extends JFrame {
 		lblPaymentInformation.setBounds(26, 296, 184, 24);
 		contentPane.add(lblPaymentInformation);
 
-		JLabel lblPay = new JLabel("Enter your total amount due:");
+		JLabel lblPay = new JLabel("Place your payment:");
 		lblPay.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblPay.setBounds(26, 331, 184, 23);
 		contentPane.add(lblPay);
@@ -107,6 +107,7 @@ public class ContactInfo extends JFrame {
 		contentPane.add(txtPay);
 
 		lblError = new JLabel("");
+		lblError.setHorizontalAlignment(SwingConstants.CENTER);
 		lblError.setForeground(new Color(255, 0, 0));
 		lblError.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblError.setBounds(38, 385, 218, 23);
@@ -117,29 +118,28 @@ public class ContactInfo extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 				double total = booking.getTotalPrice();
+				 String amountDueText = txtPay.getText();
 				
-				double amountDue = Double.parseDouble(txtPay.getText());
-				
-				if (total != amountDue) {
-					lblError.setText("Enter the same amount as your amount due.");
-					
-				} else {
-					
-				
+				 if (amountDueText == null || amountDueText.trim().isEmpty()) {
+				        lblError.setText("Enter your payment first.");
+				    } else {
+				        double amountDue = Double.parseDouble(amountDueText);
 
-				name = txtFName.getText();
-				contact = txtCNumber.getText();
-				email = txtEmailAdd.getText();
-				remarks = txtAdditional.getText();
-				tqtotal = Double.parseDouble(txtPay.getText());
+				        if (total != amountDue) {
+				            lblError.setText("Enter the same amount as your amount due.");    
+				        } else {
+				            name = txtFName.getText();
+				            contact = txtCNumber.getText();
+				            email = txtEmailAdd.getText();
+				            remarks = txtAdditional.getText();
+				            tqtotal = amountDue;
 
-
-				setVisible(false);
-				ThankYou f5 = new ThankYou(booking);
-				f5.setVisible(true);
-				}
+				            setVisible(false);
+				            ThankYou f5 = new ThankYou(booking);
+				            f5.setVisible(true);
+				        }
+				    }
 			}
-			
 			
 
 		});
