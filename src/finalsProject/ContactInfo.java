@@ -290,7 +290,7 @@ public class ContactInfo extends JFrame {
 	private void displayPayment(Booking booking) {
 		textAreaPayment.setText("Room: " + RoomTypes.roomType + "\tPhp"
 				+ String.format("%,.2f\n", RoomTypes.previousTotal) + String.join("\n", RoomTypes.selectedAdditionals)
-				+ "\tPhp" + String.format("%,.2f", RoomTypes.totalMassage) + "\nTotal Amount Due: \tPhp"
+				+ "\nTotal Amount Due: \tPhp"
 				+ String.format("%,.2f", RoomTypes.total));
 	}
 }
