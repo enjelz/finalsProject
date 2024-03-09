@@ -60,7 +60,7 @@ public class HomePage extends JFrame {
 		btnBookNow.setFont(new Font("Serif", Font.PLAIN, 15));
 
 		JLabel lblMotto = new JLabel("\"Book your stay, the perfect way.\"");
-		lblMotto.setBounds(32, 202, 255, 21);
+		lblMotto.setBounds(33, 202, 265, 21);
 		panel.add(lblMotto);
 		lblMotto.setFont(new Font("Lucida Calligraphy", Font.PLAIN, 14));
 

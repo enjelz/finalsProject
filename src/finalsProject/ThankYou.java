@@ -19,6 +19,7 @@ public class ThankYou extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblThankYouBookingNum;
+	private JLabel lblDispPleaseName;
 
 	/**
 	 * Create the frame.
@@ -56,11 +57,11 @@ public class ThankYou extends JFrame {
 		panel.add(lblMotto);
 		lblMotto.setFont(new Font("Lucida Calligraphy", Font.PLAIN, 9));
 
-		JLabel lblNewLabel = new JLabel(
-				"We are pleased to inform you that your reservation request has been received and confirmed.");
-		lblNewLabel.setBounds(56, 114, 481, 14);
-		panel.add(lblNewLabel);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblDispPleaseName = new JLabel(
+				"");
+		lblDispPleaseName.setBounds(56, 114, 481, 14);
+		panel.add(lblDispPleaseName);
+		lblDispPleaseName.setFont(new Font("Tahoma", Font.PLAIN, 11));
 
 		JLabel lblBookingDeatils = new JLabel("Booking Details");
 		lblBookingDeatils.setHorizontalAlignment(SwingConstants.CENTER);
@@ -138,6 +139,7 @@ public class ThankYou extends JFrame {
 			lblNightsStay.setText(booking.getNumOfDays() + " Night/s");
 			lblThankYouTotalAmount.setText(String.format("%,.2f", booking.getTotalPrice()));
 			lblThankYouRemarks.setText(ContactInfo.remarks);
+			lblDispPleaseName.setText("We are pleased to inform you, " + (ContactInfo.name) + " ,that your reservation request has been received and confirmed.");
 			
 		
 		btnNewButton.addActionListener(new ActionListener() {
