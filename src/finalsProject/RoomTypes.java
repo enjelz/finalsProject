@@ -501,23 +501,23 @@ public class RoomTypes extends JFrame {
 
 				if (rdbtnSigMassage.isSelected()) {
 					massage = 2000;
-					selectedAdditionals.add("Signature Massage");
+					selectedAdditionals.add("Signature Massage\tPhp2000");
 				} else {
-					selectedAdditionals.remove("Signature Massage");
+					selectedAdditionals.remove("Signature Massage\tPhp2000");
 				}
 
 				if (rdbtnAromaMassage.isSelected()) {
 					massage = 2500;
-					selectedAdditionals.add("Aroma Massage");
+					selectedAdditionals.add("Aroma Massage\tPhp2500");
 				} else {
-					selectedAdditionals.remove("Aroma Massage");
+					selectedAdditionals.remove("Aroma Massage\tPhp2500");
 				}
 
 				if (rdbtnBodyGlowMassage.isSelected()) {
 					massage = 3200;
-					selectedAdditionals.add("Glow Massage\t");
+					selectedAdditionals.add("Glow Massage\t\tPhp3200");
 				} else {
-					selectedAdditionals.remove("Glow Massage\t");
+					selectedAdditionals.remove("Glow Massage\t\tPhp3200");
 				}
 
 				totalMassage = massage * massageGuests;
@@ -540,9 +540,9 @@ public class RoomTypes extends JFrame {
 				total -= previousTotalMassageCost;
 				previousTotalMassageCost = 0;
 
-				selectedAdditionals.remove("Signature Massage");
-				selectedAdditionals.remove("Aroma Massage");
-				selectedAdditionals.remove("Glow Massage\t");
+				selectedAdditionals.remove("Signature Massage\tPhp2000");
+				selectedAdditionals.remove("Aroma Massage\tPhp2500");
+				selectedAdditionals.remove("Glow Massage\t\tPhp3200");
 				textAreaAddOns.setText(String.join("\n", selectedAdditionals));
 				updateTotal();
 			}
